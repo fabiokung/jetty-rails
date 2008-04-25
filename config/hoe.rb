@@ -34,7 +34,7 @@ end
 REV = nil
 # UNCOMMENT IF REQUIRED:
 # REV = YAML.load(`svn info`)['Revision']
-VERS = Jetty-rails::VERSION::STRING + (REV ? ".#{REV}" : "")
+VERS = JettyRails::VERSION::STRING + (REV ? ".#{REV}" : "")
 RDOC_OPTS = ['--quiet', '--title', 'jetty-rails documentation',
     "--opname", "index.html",
     "--line-numbers",

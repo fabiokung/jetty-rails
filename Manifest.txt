@@ -7,8 +7,8 @@ README.txt.9295.0
 Rakefile
 config/hoe.rb
 config/requirements.rb
-lib/jetty-rails.rb
-lib/jetty-rails/version.rb
+lib/jetty_rails.rb
+lib/jetty_rails/version.rb
 script/console
 script/destroy
 script/generate
