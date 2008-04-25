@@ -1,4 +1,4 @@
-require 'jetty-rails/version'
+require 'jetty_rails/version'
 
 AUTHOR = 'Fabio Kung'  # can also be an array of Authors
 EMAIL = "fabio.kung@gmail.com"
