@@ -6,3 +6,5 @@ require "jetty-plus-6.1.9"
 module Jetty
   include_package "org.mortbay.jetty"
 end
+
+require "jruby-rack-1.0-SNAPSHOT"
