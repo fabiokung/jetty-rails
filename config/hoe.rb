@@ -3,7 +3,7 @@ require 'jetty_rails/version'
 AUTHOR = 'Fabio Kung'  # can also be an array of Authors
 EMAIL = "fabio.kung@gmail.com"
 DESCRIPTION = "description of gem"
-GEM_NAME = 'jetty-rails' # what ppl will type to install your gem
+GEM_NAME = 'jetty_rails' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = 'jetty-rails' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
@@ -60,7 +60,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']  #An array of file patterns to delete on clean.
 
   # == Optional
-  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
+  # p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   #p.extra_deps = EXTRA_DEPENDENCIES
 
     #p.spec_extras = {}    # A hash of extra values to set in the gemspec.

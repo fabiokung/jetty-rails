@@ -1,6 +1,6 @@
 = jetty-rails
 
-* FIX (url)
+jetty-rails.rubyforge.net
 
 == DESCRIPTION:
 
@@ -16,7 +16,7 @@ The project has born from my own needs. I needed to run JForum (http://jforum.ne
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+* FIX (code sample of usage)
 
 == REQUIREMENTS:
 
