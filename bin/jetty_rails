@@ -1,0 +1,6 @@
+#!/bin/sh
+
+JETTY_RAILS_HOME=`dirname $0`/..
+# echo $JETTY_RAILS_HOME
+CLASSPATH=$CLASSPATH:$JETTY_RAILS_HOME/lib/jruby-rack-1.0-SNAPSHOT.jar:$JETTY_RAILS_HOME/lib/servlet-api-2.5-6.1.9.jar
+jruby lib/jetty_rails.rb
