@@ -1,0 +1,8 @@
+- DOCUMENTATION!
+- configuration defaults (environment, ...)
+- optionally pass application basedir from command line
+- customize configuration from command line
+- read configuration from warbler.rb
+- install custom resources from warbler configuration
+- add custom classes from warbler.rb to the context classpath
+- add custom jars from warbler.rb to the context classpath
