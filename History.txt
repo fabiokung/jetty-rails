@@ -1,4 +1,5 @@
 == 0.0.1 2008-04-24
 
-* 1 major enhancement:
-  * Initial release
+* Initial release
+
+* Running default rails applications inside Jetty
