@@ -4,7 +4,3 @@ $:.unshift(File.dirname(__FILE__)) unless
 require "java"
 require "jetty_rails/jars"
 require "jetty_rails/runner"
-
-module JettyRails
-  
-end
