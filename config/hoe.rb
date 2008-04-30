@@ -3,7 +3,7 @@ require 'jetty_rails/version'
 AUTHOR = 'Fabio Kung'  # can also be an array of Authors
 EMAIL = "fabio.kung@gmail.com"
 DESCRIPTION = "description of gem"
-GEM_NAME = 'jetty_rails' # what ppl will type to install your gem
+GEM_NAME = 'jetty-rails' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = 'jetty-rails' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
@@ -13,7 +13,7 @@ EXTRA_DEPENDENCIES = [
 
 @config_file = "~/.rubyforge/user-config.yml"
 @config = nil
-RUBYFORGE_USERNAME = "fabiokung"
+RUBYFORGE_USERNAME = "unknown"
 def rubyforge_username
   unless @config
     begin
