@@ -8,7 +8,8 @@ module JettyRails
     attr_reader :app_context
     
     def initialize(config = {})
-      self.config = config
+      @config = config
+      raise 'Basedir to be run must be provided' unless config[:base]
       
       @server = Jetty::Server.new 8080
       @resources = Jetty::Handler::ResourceHandler.new
