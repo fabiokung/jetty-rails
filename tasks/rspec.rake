@@ -26,3 +26,10 @@ Spec::Rake::SpecTask.new 'rcov' do |t|
   t.spec_files = FileList['spec/**/*_spec.rb']
   t.rcov = true
 end
+
+desc "Generate HTML report for rspec examples"
+Spec::Rake::SpecTask.new('spec_report') do |t|
+  t.spec_opts = ["--format", "html:../doc/rspec/specs.html", "--diff"]
+  t.spec_files = FileList['spec/**/*_spec.rb']
+  t.fail_on_error = false
+end
