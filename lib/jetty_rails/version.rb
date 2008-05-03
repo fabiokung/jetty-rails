@@ -2,8 +2,7 @@ module JettyRails #:nodoc:
   module VERSION #:nodoc:
     MAJOR = 0
     MINOR = 1
-    TINY  = 0
 
-    STRING = [MAJOR, MINOR, TINY].join('.')
+    STRING = [MAJOR, MINOR].join('.')
   end
 end
