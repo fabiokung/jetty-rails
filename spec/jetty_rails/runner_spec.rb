@@ -60,6 +60,14 @@ describe JettyRails::Runner, "with no extra configuration" do
     runner = JettyRails::Runner.new :base => Dir.pwd
   end
   
+  it "should have handlers for static and dynamic content" do
+    runner = JettyRails::Runner.new :base => Dir.pwd
+    resource_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::ResourceHandler)
+    resource_handlers.size.should eql(1)
+    webapp_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::WebAppContext)
+    webapp_handlers.size.should eql(1)
+  end
+  
 end
 
 describe JettyRails::Runner, "with custom configuration" do
