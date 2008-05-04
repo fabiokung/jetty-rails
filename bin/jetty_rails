@@ -2,6 +2,18 @@
 require "java"
 require "jetty_rails"
 
-execution_dir = ARGV[0] || Dir.pwd
-runner = JettyRails::Runner.new :base => execution_dir
-runner.start
+def print_usage
+  puts 'jruby -S jetty_rails <basedir> <context-path> <environment>'
+end
+
+if ARGV[0] == '--help'
+  print_usage
+else
+  config = {}
+  config[:base] = ARGV[0] || Dir.pwd
+  config[:context_path] = ARGV[1] unless ARGV[1].nil?
+  config[:environment] = ARGV[2] unless ARGV[2].nil?
+  
+  runner = JettyRails::Runner.new(config)
+  runner.start
+end
