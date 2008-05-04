@@ -35,7 +35,6 @@ module JettyRails
     end
     
     def install_rack_on(server)
-      #TODO root context should be configurable
       @app_context = Jetty::Handler::WebAppContext.new("/", config[:context_path])
       @app_context.class_loader = JRuby.runtime.jruby_class_loader
       @app_context.resource_base = config[:base]
