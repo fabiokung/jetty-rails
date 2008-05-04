@@ -1,5 +1,4 @@
 - DOCUMENTATION!
-- optionally pass application basedir from command line
 - add more flexibility to jetty_rails bin (-contextPath <path> -environment <env> ...)
 - configuration defaults (environment, web.xml, classes dir, lib dir, ...)
 - customize configuration from command line
