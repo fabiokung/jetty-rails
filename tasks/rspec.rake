@@ -25,6 +25,7 @@ Spec::Rake::SpecTask.new 'rcov' do |t|
   t.spec_opts = ['--options', "spec/spec.opts"]
   t.spec_files = FileList['spec/**/*_spec.rb']
   t.rcov = true
+  t.rcov_opts = ['--exclude', 'spec']
 end
 
 desc "Generate HTML report for rspec examples"

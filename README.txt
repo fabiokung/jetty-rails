@@ -22,6 +22,11 @@ The project has born from my own needs. I needed to run JForum (http://jforum.ne
 
 * FIX (list of requirements)
 
+* To generate coverage report with jruby (>= 1.1) follow 
+http://www.ruby-forum.com/topic/146252 and:
+
+jruby -S rake rcov
+
 == INSTALL:
 
 * FIX (sudo gem install, anything else)
