@@ -28,10 +28,6 @@ module JettyRails
     end
     
     private
-    def rack_filter
-      Jetty::FilterHolder.new(Rack::RackFilter.new)
-    end
-    
     def add_public_dir_to(server)
       @resources = Jetty::Handler::ResourceHandler.new
       @resources.resource_base = config[:base] + '/public'
@@ -56,5 +52,10 @@ module JettyRails
       @app_context.add_filter(rack_filter, "/*", Jetty::Context::DEFAULT)
       server.add_handler(@app_context)
     end
+    
+    def rack_filter
+      Jetty::FilterHolder.new(Rack::RackFilter.new)
+    end
+    
   end
 end
