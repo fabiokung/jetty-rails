@@ -31,7 +31,15 @@ module JettyRails
     def add_public_dir_to(server)
       @resources = Jetty::Handler::ResourceHandler.new
       @resources.resource_base = config[:base] + '/public'
+      @resources = remove_context_from_urls_on @resources unless config[:context_path] == '/'
       server.add_handler(@resources)
+    end
+    
+    def remove_context_from_urls_on(original_handler)
+      rewriter = Jetty::Handler::RewriteHandler.new
+      rewriter.add_rewrite_rule("#{config[:context_path]}/*", "/")
+      rewriter.handler = original_handler
+      rewriter
     end
     
     def install_rack_on(server)
