@@ -14,6 +14,8 @@ module JettyRails
     
     def initialize(config = {})
       @config = config.symbolize_keys!.reverse_merge!(@@defaults)
+      add_root_method_to @config[:context_path]
+      
       raise 'Basedir to be run must be provided' unless config[:base]
       
       @server = Jetty::Server.new 8080
@@ -31,11 +33,11 @@ module JettyRails
     def add_public_dir_to(server)
       @resources = Jetty::Handler::ResourceHandler.new
       @resources.resource_base = config[:base] + '/public'
-      @resources = remove_context_from_urls_on @resources unless config[:context_path] == '/'
+      @resources = no_context_path_for_urls_on @resources unless config[:context_path].root?
       server.add_handler(@resources)
     end
     
-    def remove_context_from_urls_on(original_handler)
+    def no_context_path_for_urls_on(original_handler)
       rewriter = Jetty::Handler::RewriteHandler.new
       rewriter.add_rewrite_rule("#{config[:context_path]}/*", "/")
       rewriter.handler = original_handler
@@ -62,6 +64,14 @@ module JettyRails
     
     def rack_filter
       Jetty::FilterHolder.new(Rack::RackFilter.new)
+    end
+    
+    def add_root_method_to(target)
+      (class << target; self; end).class_eval do
+        def root?
+          self == '/'
+        end
+      end
     end
     
   end
