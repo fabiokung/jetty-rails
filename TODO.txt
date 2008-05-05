@@ -9,3 +9,6 @@
 - load web.xml (or web.erb.xml) from config/web.xml
 - read any custom jetty.xml
 - support jetty-plus features (i.e.: jndi)
+- specs for rewriter handler
+- Fix 403 - Forbidden by ResourceHandler for directory listing urls 
+  => it should delegate to rails handler
