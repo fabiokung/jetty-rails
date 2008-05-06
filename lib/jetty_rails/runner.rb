@@ -33,15 +33,15 @@ module JettyRails
     def add_public_dir_to(server)
       @resources = Jetty::Handler::ResourceHandler.new
       @resources.resource_base = config[:base] + '/public'
-      @resources = no_context_path_for_urls_on @resources unless config[:context_path].root?
-      server.add_handler(@resources)
+      handler = add_context_capability_to @resources
+      server.add_handler(handler)
     end
     
-    def no_context_path_for_urls_on(original_handler)
-      rewriter = Jetty::Handler::RewriteHandler.new
-      rewriter.add_rewrite_rule("#{config[:context_path]}/*", "/")
-      rewriter.handler = original_handler
-      rewriter
+    def add_context_capability_to(handler)
+      return handler if config[:context_path].root?
+      context_handler = Jetty::Handler::ContextHandler.new(config[:context_path])
+      context_handler.handler = @resources
+      context_handler
     end
     
     def install_rack_on(server)
