@@ -65,7 +65,7 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
 
   # A hash of extra values to set in the gemspec.
   p.spec_extras = {
-    :platform => "java"
+    # :platform => "java"
   }
 end
 
