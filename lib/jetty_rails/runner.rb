@@ -33,8 +33,10 @@ module JettyRails
     def add_public_dir_to(server)
       @resources = Jetty::Handler::ResourceHandler.new
       @resources.resource_base = config[:base] + '/public'
-      handler = add_context_capability_to @resources
-      server.add_handler(handler)
+      context_capable = add_context_capability_to @resources
+      delegate_on_error = JettyRails::Handler::DelegateOnErrorsHandler.new
+      delegate_on_error.handler = context_capable
+      server.add_handler(delegate_on_error)
     end
     
     def add_context_capability_to(handler)

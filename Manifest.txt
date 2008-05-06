@@ -11,6 +11,7 @@ lib/jetty-6.1.9.jar
 lib/jetty-plus-6.1.9.jar
 lib/jetty-util-6.1.9.jar
 lib/jetty_rails.rb
+lib/jetty_rails/handler/delegate_on_errors_handler.rb
 lib/jetty_rails/jars.rb
 lib/jetty_rails/runner.rb
 lib/jetty_rails/version.rb

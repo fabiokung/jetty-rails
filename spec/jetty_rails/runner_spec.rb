@@ -62,10 +62,17 @@ describe JettyRails::Runner, "with no extra configuration" do
   
   it "should have handlers for static and dynamic content" do
     runner = JettyRails::Runner.new :base => Dir.pwd
+    runner.server.handlers.size.should eql(2)
     resource_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::ResourceHandler)
     resource_handlers.size.should eql(1)
     webapp_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::WebAppContext)
     webapp_handlers.size.should eql(1)
+  end
+  
+  it "should delegate to rails handler if requested dir has no welcome file" do
+    runner = JettyRails::Runner.new :base => Dir.pwd
+    delegate_handler = runner.server.handlers[0]
+    delegate_handler.should be_kind_of(JettyRails::Handler::DelegateOnErrorsHandler)
   end
   
 end
@@ -86,4 +93,9 @@ describe JettyRails::Runner, "with custom configuration" do
     runner.app_context.context_path.should eql('/myapp')
   end
   
+  it "should handle custom context paths for static and dynamic content" do
+    runner = JettyRails::Runner.new :base => Dir.pwd, :context_path => "/myapp" 
+    context_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::ContextHandler)
+    context_handlers.size.should eql(2) # one for static, one for dynamic
+  end
 end
