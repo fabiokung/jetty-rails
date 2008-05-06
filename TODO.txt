@@ -1,5 +1,8 @@
 - DOCUMENTATION!
-- add more flexibility to jetty_rails bin (-contextPath <path> -environment <env> ...)
+- add more flexibility to jetty_rails bin:
+  * -contextPath <path>
+  * -environment <env>
+  * -p <port>
 - configuration defaults (environment, web.xml, classes dir, lib dir, ...)
 - customize configuration from command line
 - read configuration from warbler.rb
@@ -9,6 +12,3 @@
 - load web.xml (or web.erb.xml) from config/web.xml
 - read any custom jetty.xml
 - support jetty-plus features (i.e.: jndi)
-- specs for custom context paths
-- Fix 403 - Forbidden by ResourceHandler for directory listing urls 
-  => it should delegate to rails handler
