@@ -11,13 +11,13 @@
 # -h, --help:
 #    show help
 #
-# --context-path x, -u x:
+# --context-path PATH, -u PATH:
 #    change the application context path (default: '/')
 #
-# --port x, -p x:
+# --port PORT, -p PORT:
 #    change server port (default: 8080)
 #
-# --environment x, -e x:
+# --environment ENV, -e ENV:
 #    change rails environment (default: development)
 #
 # BASEDIR (optional): directory to be run (default: current).
