@@ -31,6 +31,15 @@ describe "binary executable with no command line arguments" do
     load File.dirname(__FILE__) + '/../bin/jetty_rails'
   end
   
+  it "should not set the port by default" do
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should_not have_key(:port)
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+  end
+  
 end
 
 describe "binary executable with command line arguments" do
@@ -46,8 +55,8 @@ describe "binary executable with command line arguments" do
     load File.dirname(__FILE__) + '/../bin/jetty_rails'
   end
   
-  it "should take the second command line argument as context path" do
-    ARGV[0] = '/any/app/dir'
+  it "should take --context-path command line option as context path" do
+    ARGV[0] = '--context-path'
     ARGV[1] = '/myapp'
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
@@ -58,13 +67,61 @@ describe "binary executable with command line arguments" do
     load File.dirname(__FILE__) + '/../bin/jetty_rails'
   end
   
-  it "should take the third command line argument as custom environment" do
-    ARGV[0] = '/any/app/dir'
-    ARGV[2] = 'production'
+  it "should take -u command line option as context path" do
+    ARGV[0] = '-u'
+    ARGV[1] = '/myapp'
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should have_key(:context_path)
+      config[:context_path].should eql('/myapp')
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+  end
+  
+  it "should take --environment command line option as custom environment" do
+    ARGV[0] = '--environment'
+    ARGV[1] = 'production'
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:environment)
       config[:environment].should eql('production')
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+  end
+  
+  it "should take -e command line option as custom environment" do
+    ARGV[0] = '-e'
+    ARGV[1] = 'production'
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should have_key(:environment)
+      config[:environment].should eql('production')
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+  end
+  
+  it "should take --port command line option as custom server port" do
+    ARGV[0] = '--port'
+    ARGV[1] = '80'
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should have_key(:port)
+      config[:port].should eql(80)
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+  end
+  
+  it "should take -p command line option as custom server port" do
+    ARGV[0] = '-p'
+    ARGV[1] = '80'
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should have_key(:port)
+      config[:port].should eql(80)
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_rails'

@@ -1,19 +1,83 @@
 #!/usr/bin/env jruby
+
+# == Synopsis
+#
+# jetty_rails: jetty server for rails applications
+#
+# == Usage
+#
+# jetty_tails [OPTION] ... BASEDIR
+#
+# -h, --help:
+#    show help
+#
+# --context-path x, -u x:
+#    change the application context path (default: '/')
+#
+# --port x, -p x:
+#    change server port (default: 8080)
+#
+# --environment x, -e x:
+#    change rails environment (default: development)
+#
+# BASEDIR (optional): directory to be run (default: current).
 require "java"
 require "jetty_rails"
+require 'rdoc/usage'
+require 'getoptlong'
 
-def print_usage
-  puts 'jruby -S jetty_rails <basedir> <context-path> <environment>'
+# fix to work with rubygems (use current file instead of main)
+def RDoc.usage_no_exit(*args)
+  comment = File.open(__FILE__) do |file|
+    find_comment(file)
+  end
+
+  comment = comment.gsub(/^\s*#/, '')
+
+  markup = SM::SimpleMarkup.new
+  flow_convertor = SM::ToFlow.new
+
+  flow = markup.convert(comment, flow_convertor)
+
+  format = "plain"
+
+  unless args.empty?
+    flow = extract_sections(flow, args)
+  end
+
+  options = RI::Options.instance
+  if args = ENV["RI"]
+    options.parse(args.split)
+  end
+  formatter = options.formatter.new(options, "")
+  formatter.display_flow(flow)
 end
 
-if ARGV[0] == '--help'
-  print_usage
-else
-  config = {}
-  config[:base] = ARGV[0] || Dir.pwd
-  config[:context_path] = ARGV[1] unless ARGV[1].nil?
-  config[:environment] = ARGV[2] unless ARGV[2].nil?
-  
-  runner = JettyRails::Runner.new(config)
-  runner.start
+opts = GetoptLong.new(
+    [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
+    [ '--context-path', '-u', GetoptLong::REQUIRED_ARGUMENT ],
+    [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
+    [ '--environment', '-e', GetoptLong::REQUIRED_ARGUMENT ]
+  )
+
+config = {
+  :base => Dir.pwd
+}
+
+opts.each do |opt, arg|
+  case opt
+    when '--help'
+      RDoc::usage
+    when '--context-path'
+      config[:context_path] = arg
+    when '--port'
+      config[:port] = arg.to_i
+    when '--environment'
+      config[:environment] = arg
+  end
 end
+
+config[:base] = ARGV.shift unless ARGV.empty?
+
+runner = JettyRails::Runner.new(config)
+runner.start
