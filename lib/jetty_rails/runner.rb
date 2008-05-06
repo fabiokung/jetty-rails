@@ -9,7 +9,8 @@ module JettyRails
     
     @@defaults = {
       :environment => 'development',
-      :context_path => '/'
+      :context_path => '/',
+      :port => 8080 
     }
     
     def initialize(config = {})
@@ -18,7 +19,7 @@ module JettyRails
       
       raise 'Basedir to be run must be provided' unless config[:base]
       
-      @server = Jetty::Server.new 8080
+      @server = Jetty::Server.new(config[:port])
       
       add_public_dir_to server
       install_rack_on server

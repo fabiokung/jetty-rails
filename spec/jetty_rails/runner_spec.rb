@@ -25,6 +25,13 @@ describe JettyRails::Runner, "with no extra configuration" do
     runner.app_context.context_path.should eql('/')
   end
   
+  it "should set server default port to 8080" do
+    runner = JettyRails::Runner.new :base => Dir.pwd
+    runner.config.should have_key(:port)
+    runner.config[:port].should eql(8080)
+    runner.app_context.context_path.should eql('/')
+  end
+  
   it "should set rails root" do
     runner = JettyRails::Runner.new :base => Dir.pwd
     runner.app_context.init_params['rails.root'].should eql('/')
@@ -91,6 +98,13 @@ describe JettyRails::Runner, "with custom configuration" do
     runner.config.should have_key(:context_path)
     runner.config[:context_path].should eql('/myapp')
     runner.app_context.context_path.should eql('/myapp')
+  end
+  
+  it "should allow to override the server port" do
+    runner = JettyRails::Runner.new :base => Dir.pwd, :port => 8585 
+    runner.config.should have_key(:port)
+    runner.config[:port].should eql(8585)
+    runner.server.connectors[0].port.should eql(8585)
   end
   
   it "should handle custom context paths for static and dynamic content" do

@@ -1,8 +1,4 @@
 - DOCUMENTATION!
-- add more flexibility to jetty_rails bin:
-  * -contextPath <path>
-  * -environment <env>
-  * -p <port>
 - configuration defaults (environment, web.xml, classes dir, lib dir, ...)
 - customize configuration from command line
 - read configuration from warbler.rb
