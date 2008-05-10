@@ -51,18 +51,18 @@ describe JettyRails::Runner, "with no extra configuration" do
     runner = JettyRails::Runner.new :base => Dir.pwd
     listeners = runner.app_context.event_listeners
     listeners.size.should eql(1)
-    listeners[0].should be_kind_of(Rack::RailsServletContextListener)
+    listeners[0].should be_kind_of(JettyRails::Rack::RailsServletContextListener)
   end
   
   it "should install RackFilter" do
     context = mock("web application context", :null_object => true)
-    server = Jetty::Server.new
+    server = JettyRails::Jetty::Server.new
     context.stub!(:getServer).and_return(server)
-    Jetty::Handler::WebAppContext.should_receive(:new).and_return(context)
+    JettyRails::Jetty::Handler::WebAppContext.should_receive(:new).and_return(context)
     context.should_receive(:add_filter).once do |filter_holder, url_pattern, dispatches|
-      filter_holder.filter.should be_kind_of(Rack::RackFilter)
+      filter_holder.filter.should be_kind_of(JettyRails::Rack::RackFilter)
       url_pattern.should eql('/*')
-      dispatches.should eql(Jetty::Context::DEFAULT)
+      dispatches.should eql(JettyRails::Jetty::Context::DEFAULT)
     end
     runner = JettyRails::Runner.new :base => Dir.pwd
   end
@@ -70,9 +70,9 @@ describe JettyRails::Runner, "with no extra configuration" do
   it "should have handlers for static and dynamic content" do
     runner = JettyRails::Runner.new :base => Dir.pwd
     runner.server.handlers.size.should eql(2)
-    resource_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::ResourceHandler)
+    resource_handlers = runner.server.getChildHandlersByClass(JettyRails::Jetty::Handler::ResourceHandler)
     resource_handlers.size.should eql(1)
-    webapp_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::WebAppContext)
+    webapp_handlers = runner.server.getChildHandlersByClass(JettyRails::Jetty::Handler::WebAppContext)
     webapp_handlers.size.should eql(1)
   end
   
@@ -109,7 +109,7 @@ describe JettyRails::Runner, "with custom configuration" do
   
   it "should handle custom context paths for static and dynamic content" do
     runner = JettyRails::Runner.new :base => Dir.pwd, :context_path => "/myapp" 
-    context_handlers = runner.server.getChildHandlersByClass(Jetty::Handler::ContextHandler)
+    context_handlers = runner.server.getChildHandlersByClass(JettyRails::Jetty::Handler::ContextHandler)
     context_handlers.size.should eql(2) # one for static, one for dynamic
   end
 end
