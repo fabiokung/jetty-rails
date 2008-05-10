@@ -8,19 +8,20 @@
 #
 # jetty_tails [OPTION] ... BASEDIR
 #
-# -h, --help:
+# -h, --help::
 #    show help
 #
-# --context-path PATH, -u PATH:
+# --context-path PATH, -u PATH::
 #    change the application context path (default: '/')
 #
-# --port PORT, -p PORT:
+# --port PORT, -p PORT::
 #    change server port (default: 8080)
 #
-# --environment ENV, -e ENV:
+# --environment ENV, -e ENV::
 #    change rails environment (default: development)
 #
 # BASEDIR (optional): directory to be run (default: current).
+
 require "java"
 require "jetty_rails"
 require 'rdoc/usage'
