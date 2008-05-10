@@ -2,7 +2,7 @@ require 'jetty_rails/version'
 
 AUTHOR = 'Fabio Kung'  # can also be an array of Authors
 EMAIL = "fabio.kung@gmail.com"
-DESCRIPTION = "jetty server to run rails applications"
+DESCRIPTION = "jetty server for rails applications"
 GEM_NAME = 'jetty-rails' # what ppl will type to install your gem
 RUBYFORGE_PROJECT = 'jetty-rails' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
