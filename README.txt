@@ -10,18 +10,20 @@ This project is useful for people developing jruby on rails apps that can not us
 
 The project has born from my own needs. I needed to run JForum (http://jforum.net) on the same context of my jruby on rails application. I had also to integrate HttpSessions (avoiding single sign on) and use ServletContext in-memory cache store.
 
-== FEATURES/PROBLEMS:
+== FEATURES:
 
-* Uses "JRuby Rack":http://wiki.jruby.org/wiki/JRuby_Rack
+* Uses {JRuby Rack}[http://wiki.jruby.org/wiki/JRuby_Rack].
 * FIX (list of features or problems)
 
-=== Known Issues
+== KNOWN ISSUES
 
-To generate coverage report with jruby (>= 1.1) follow 
+* To generate coverage report with jruby (>= 1.1) follow 
 instructions from http://www.ruby-forum.com/topic/146252 and run 
 (inside jetty-rails root dir):
 
 jruby -S rake rcov
+
+* Hoe in jruby has an issue reading the ~/.hoerc file. Just remove it.
 
 == USAGE:
 
