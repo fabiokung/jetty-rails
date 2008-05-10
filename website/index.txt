@@ -1,81 +1,64 @@
-h1. jetty rails
+h1. Jetty Rails
 
 h1. &#x2192; 'jetty-rails'
 
 
 h2. What
 
+Jetty Rails aims to run any Warbler based jruby on rails applications with Jetty Container, loading configuration from Warbler.
+
+This project is useful for people developing jruby on rails apps that can not use mongrel for development. Rails applications integrated with servlet based applications in the same context would be a reasonable reason.
+
+The project has born from my own needs. I needed to run "JForum":http://jforum.net on the same context of my jruby on rails application. I had also to integrate @HttpSessions@ (avoiding single sign on) and use @ServletContext@ in-memory cache store.
 
 h2. Installing
 
-<pre syntax="ruby">sudo gem install jetty-rails</pre>
+<pre>jruby -S gem install jetty-rails</pre>
 
 h2. The basics
 
+Jetty Rails uses Jetty Handlers to dispatch requests to the "JRuby Rack adapter":http://fddsfs. 
+
+Things like Java @HttpSession@, @ServletContext@ and Runtime Pools are given by JRuby Rack Filter.
 
 h2. Demonstration of usage
 
+<pre>
+cd myrailsapp
+jruby -S jetty_rails
+</pre>
+  
+--help option shows usage details:
+  
+<pre>jruby -S jetty_rails --help</pre>
 
 
-h2. Forum
+h2. Mailing list
 
 "http://groups.google.com/group/jetty-rails":http://groups.google.com/group/jetty-rails
 
-TODO - create Google Group - jetty-rails
+h2. Getting the source
 
-h2. How to submit patches
-
-Read the "8 steps for fixing other people's code":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/ and for section "8b: Submit patch to Google Groups":http://drnicwilliams.com/2007/06/01/8-steps-for-fixing-other-peoples-code/#8b-google-groups, use the Google Group above.
-
-TODO - pick SVN or Git instructions
-
-The trunk repository is <code>svn://rubyforge.org/var/svn/jetty-rails/trunk</code> for anonymous access.
-
-OOOORRRR
-
-You can fetch the source from either:
-
-<% if rubyforge_project_id %>
-
-* rubyforge: "http://rubyforge.org/scm/?group_id=<%= rubyforge_project_id %>":http://rubyforge.org/scm/?group_id=<%= rubyforge_project_id %>
-
-<pre>git clone git://rubyforge.org/jetty-rails.git</pre>
-
-<% else %>
-
-* rubyforge: MISSING IN ACTION
-
-TODO - You can not created a RubyForge project, OR have not run <code>rubyforge config</code>
-yet to refresh your local rubyforge data with this projects' id information.
-
-When you do this, this message will magically disappear!
-
-Or you can hack website/index.txt and make it all go away!!
-
-<% end %>
-
-* github: "http://github.com/fabiokung/jetty-rails/tree/master":http://github.com/fabiokung/jetty-rails/tree/master
+github: "http://github.com/fabiokung/jetty-rails/tree/master":http://github.com/fabiokung/jetty-rails/tree/master
 
 <pre>git clone git://github.com/fabiokung/jetty-rails.git</pre>
-
-
-
-* gitorious: "git://gitorious.org/jetty-rails/mainline.git":git://gitorious.org/jetty-rails/mainline.git
-
-<pre>git clone git://gitorious.org/jetty-rails/mainline.git</pre>
 
 h3. Build and test instructions
 
 <pre>cd jetty-rails
-rake test
-rake install_gem</pre>
+jruby -S rake # run specs
+jruby -S rake package
+jruby -S gem install pkg/*.gem</pre>
 
 
 h2. License
 
-This code is free to use under the terms of the MIT license. 
+Jetty Rails is distributed under the terms of The MIT License.
+
+Copyright (c) 2008 "Fabio Kung":mailto:fabio.kung@gmail.com
+  
+Read more details in the bundled +Licenses.txt+ file. There are other pieces of software bundled with jetty-rails. Before using jetty-rails, make sure you agree with all of them.
 
 h2. Contact
 
-Comments are welcome. Send an email to "Fabio Kung":mailto:fabio.kung@gmail.com via the "forum":http://groups.google.com/group/jetty-rails
-
+Comments are welcome. Send an email to "Fabio Kung":mailto:fabio.kung@gmail.com via the "mailing list":http://groups.google.com/group/jetty-rails

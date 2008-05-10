@@ -13,14 +13,11 @@ The project has born from my own needs. I needed to run JForum (http://jforum.ne
 == FEATURES:
 
 * Uses {JRuby Rack}[http://wiki.jruby.org/wiki/JRuby_Rack].
-* FIX (list of features or problems)
+* FIX (list of features)
 
 == KNOWN ISSUES
 
-* To generate coverage report with jruby (>= 1.1) follow 
-instructions from http://www.ruby-forum.com/topic/146252 and run 
-(inside jetty-rails root dir):
-
+* To generate coverage report with jruby (>= 1.1) follow instructions from http://www.ruby-forum.com/topic/146252 and run (inside jetty-rails root dir):
 jruby -S rake rcov
 
 * Hoe in jruby has an issue reading the ~/.hoerc file. Just remove it.
@@ -30,7 +27,7 @@ jruby -S rake rcov
   cd myrailsapp
   jruby -S jetty_rails
   
-  you can use the --help option to see more usage details:
+--help option shows usage details:
   
   jruby -S jetty_rails --help
 
@@ -39,7 +36,7 @@ jruby -S rake rcov
 jetty-rails requires jruby (>=1.1). Please make sure you already have 
 it properly installed and inserted in your PATH environment variable.
 
-"Installing JRuby Instructions":http://wiki.jruby.org/wiki/Getting_Started
+{Installing JRuby Instructions}[http://wiki.jruby.org/wiki/Getting_Started]
 
 == INSTALL:
 
@@ -48,8 +45,7 @@ it properly installed and inserted in your PATH environment variable.
 == LICENSE:
 
 Jetty Rails is distributed under the terms of The MIT License.
-
-  Copyright (c) 2008 Fabio Kung <fabio.kung@gmail.com>
+Copyright (c) 2008 Fabio Kung <fabio.kung@gmail.com>
   
 Read more details in the bundled +Licenses.txt+ file. There are other 
 pieces of software bundled with jetty-rails. Before using jetty-rails, 
