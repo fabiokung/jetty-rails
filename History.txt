@@ -1,5 +1,10 @@
-== 0.0.1 2008-04-24
+== 0.2
+
+* Running any rails applications with no extra classpath
+* Command line options for jett_rails binary executable.
+  See: <tt>jruby -S jetty_rails --help</tt> for details.
+
+== 0.1
 
 * Initial release
-
 * Running default rails applications inside Jetty

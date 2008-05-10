@@ -1,9 +1,11 @@
-- DOCUMENTATION!
-- configuration defaults (environment, web.xml, classes dir, lib dir, ...)
-- read configuration from warbler.rb
-- install custom resources from warbler configuration
-- add custom classes from warbler.rb to the context classpath
-- add custom jars from warbler.rb to the context classpath
-- load web.xml (or web.erb.xml) from config/web.xml
-- read any custom jetty.xml
-- support jetty-plus features (i.e.: jndi)
+== TODO never ends...
+
+* DOCUMENTATION!
+* configuration defaults (environment, web.xml, classes dir, lib dir, ...)
+* read configuration from warbler.rb
+* install custom resources from warbler configuration
+* add custom classes from warbler.rb to the context classpath
+* add custom jars from warbler.rb to the context classpath
+* load web.xml (or web.erb.xml) from config/web.xml
+* read any custom jetty.xml
+* support jetty-plus features (i.e.: jndi)
