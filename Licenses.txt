@@ -25,3 +25,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 = Additional Bundled Software
 
+JRuby-Rack (jruby-rack-*.jar) is distributed under the terms of the 
+MIT license. See http://svn.codehaus.org/jruby-contrib/trunk/rack/LICENSE.txt
+for details.
+
+Jetty (jetty-*.jar) is distributed under the terms of the Apache 2.0 License. 
+See http://jetty.mortbay.org/jetty-6/LICENSE.txt for details.
+
+Servlet API 2.5, a.k.a JSR-154, (servlet-api-2.5-*.jar) is distributed 
+under the terms of the Berkeley License. See http://developers.sun.com/license/berkeley_license.html 
+for details.
