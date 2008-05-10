@@ -12,7 +12,7 @@ module Jetty
   end
 end
 
-require "jruby-rack-1.0-SNAPSHOT"
+require "jruby-rack-0.9"
 module Rack
   include_package "org.jruby.rack"
   include_package "org.jruby.rack.rails"
