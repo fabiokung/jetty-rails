@@ -39,6 +39,7 @@ RDOC_OPTS = ['--quiet', '--title', 'jetty-rails documentation',
     "--opname", "index.html",
     "--line-numbers",
     "--main", "README",
+    "--exclude", "*.jar",
     "--inline-source"]
 
 class Hoe
@@ -58,13 +59,13 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.rubyforge_name = RUBYFORGE_PROJECT if RUBYFORGE_PROJECT
   p.test_globs = ["spec/**/*_spec.rb"]
   p.clean_globs |= ['**/.*.sw?', '*.gem', '.config', '**/.DS_Store']
-  # p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
-  # p.extra_deps = EXTRA_DEPENDENCIES
+  p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
+  p.extra_deps = EXTRA_DEPENDENCIES
 
   # A hash of extra values to set in the gemspec.
-  p.spec_extras = {
+  # p.spec_extras = {
     # :platform => "java"
-  }
+  # }
 end
 
 CHANGES = $hoe.paragraphs_of('History.txt', 0..1).join("\\n\\n")
