@@ -19,7 +19,10 @@ module JettyRails
       
       raise 'Basedir to be run must be provided' unless config[:base]
       
-      @server = Jetty::Server.new(config[:port])
+      @server = Jetty::Server.new
+      connector = Jetty::SelectChannelConnector.new
+      connector.port = config[:port]
+      @server.add_connector(connector)
       
       add_public_dir_to server
       install_rack_on server
