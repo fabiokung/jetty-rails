@@ -32,6 +32,9 @@ jruby -S jetty_rails
   
 <pre>jruby -S jetty_rails --help</pre>
 
+h2. More Documentation
+
+"See RDoc":rdoc/
 
 h2. Mailing list
 
