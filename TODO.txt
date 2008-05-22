@@ -1,8 +1,7 @@
 == TODO never ends...
 
-* DOCUMENTATION!
-* change default port to 3000
-* configuration defaults (environment, web.xml, classes dir, lib dir, ...)
+* Improve RDocs
+* configuration defaults (web.xml, classes dir, lib dir, ...)
 * read configuration from warbler.rb
 * install custom resources from warbler configuration
 * more command line options: --daemon, --num-instances
