@@ -5,9 +5,9 @@ h1. &#x2192; 'jetty-rails'
 
 h2. What
 
-Jetty Rails aims to run any Warbler based jruby on rails applications with Jetty Container, loading configuration from Warbler.
+Jetty Rails aims to run any Warbler based jruby on rails ou jruby merb applications with Jetty Container, loading configuration from Warbler.
 
-This project is useful for people developing jruby on rails apps that can not use mongrel for development. Rails applications integrated with servlet based applications in the same context would be a reasonable reason.
+This project is useful for people developing jruby on rails (or merb) apps that can not use mongrel for development. Rails and Merb applications integrated with servlet based applications in the same context would be a reasonable reason.
 
 The project has born from my own needs. I needed to run "JForum":http://jforum.net on the same context of my jruby on rails application. I had also to integrate @HttpSessions@ (avoiding single sign on) and use @ServletContext@ in-memory cache store.
 
@@ -17,20 +17,30 @@ h2. Installing
 
 h2. The basics
 
-Jetty Rails uses Jetty Handlers to dispatch requests to the "JRuby Rack adapter":http://fddsfs. 
+Jetty Rails uses Jetty Handlers to dispatch requests to the "JRuby Rack adapter":http://wiki.jruby.org/wiki/JRuby_Rack. 
 
 Things like Java @HttpSession@, @ServletContext@ and Runtime Pools are given by JRuby Rack Filter.
 
 h2. Demonstration of usage
 
+Rails:
 <pre>
 cd myrailsapp
 jruby -S jetty_rails
+</pre>
+
+Merb:
+<pre>
+cd mymerbapp
+jruby -S jetty_merb
 </pre>
   
 --help option shows usage details:
   
 <pre>jruby -S jetty_rails --help</pre>
+<pre>jruby -S jetty_merb --help</pre>
+
+Please note that you may only use Merb with ActiveRecord, as DataMapper doesn't work in JRuby yet.
 
 h2. More Documentation
 

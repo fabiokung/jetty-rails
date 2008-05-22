@@ -1,3 +1,8 @@
+== 0.4
+* Merb support! jruby -S jetty_merb
+* Changed default ports to 3000 (rails) and 4000 (merb)
+* More specs
+
 == 0.3
 
 * Improved Documentation: rdoc and site.
