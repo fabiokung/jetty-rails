@@ -5,11 +5,11 @@ h1. &#x2192; 'jetty-rails'
 
 h2. What
 
-Jetty Rails aims to run any Warbler based jruby on rails ou jruby merb applications with Jetty Container, loading configuration from Warbler.
+Jetty Rails aims to run any Warbler based JRuby on Rails or JRuby Merb applications with Jetty Container, loading configuration from Warbler.
 
-This project is useful for people developing jruby on rails (or merb) apps that can not use mongrel for development. Rails and Merb applications integrated with servlet based applications in the same context would be a reasonable reason.
+This project is useful for people developing JRuby on Rails (or Merb) applications that can not use mongrel for development. Rails and Merb applications integrated with servlet based applications in the same context would be a reasonable reason.
 
-The project has born from my own needs. I needed to run "JForum":http://jforum.net on the same context of my jruby on rails application. I had also to integrate @HttpSessions@ (avoiding single sign on) and use @ServletContext@ in-memory cache store.
+The project has born from my own needs ("read more":http://fabiokung.com/2008/05/14/jetty-rails-gem-simple-jruby-on-rails-development-with-servlet-containers/). I needed to run "JForum":http://jforum.net on the same context of my jruby on rails application. I had also to integrate @HttpSessions@ (avoiding single sign on) and use @ServletContext@ in-memory cache store.
 
 h2. Installing
 
