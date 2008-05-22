@@ -15,7 +15,7 @@
 #    change the application context path (default: '/')
 #
 # --port PORT, -p PORT::
-#    change server port (default: 8080)
+#    change server port (default: 4000)
 #
 # --environment ENV, -e ENV::
 #    change rails environment (default: development)
@@ -62,7 +62,9 @@ opts = GetoptLong.new(
   )
 
 config = {
-  :base => Dir.pwd
+  :base => Dir.pwd,
+  :port => 4000,
+  :adapter => :merb
 }
 
 opts.each do |opt, arg|
@@ -80,5 +82,5 @@ end
 
 config[:base] = ARGV.shift unless ARGV.empty?
 
-runner = JettyRails::Runner.new(:merb, config)
+runner = JettyRails::Runner.new(config)
 runner.start

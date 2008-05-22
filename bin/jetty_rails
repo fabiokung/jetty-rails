@@ -15,7 +15,7 @@
 #    change the application context path (default: '/')
 #
 # --port PORT, -p PORT::
-#    change server port (default: 8080)
+#    change server port (default: 3000)
 #
 # --environment ENV, -e ENV::
 #    change rails environment (default: development)
@@ -62,7 +62,9 @@ opts = GetoptLong.new(
   )
 
 config = {
-  :base => Dir.pwd
+  :base => Dir.pwd,
+  :port => 3000,
+  :adapter => :rails
 }
 
 opts.each do |opt, arg|
