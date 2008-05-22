@@ -8,12 +8,13 @@ module JettyRails
     attr_reader :app_context
     
     @@defaults = {
+      :adapter => :rails, 
       :environment => 'development',
       :context_path => '/',
       :port => 8080 
     }
     
-    def initialize(adapter = :rails, config = {})
+    def initialize(config = {})
       @config = config.symbolize_keys!.reverse_merge!(@@defaults)
       add_root_method_to @config[:context_path]
       
@@ -25,7 +26,7 @@ module JettyRails
       @server.add_connector(connector)
       
       add_public_dir_to server
-      install_rack_on server, adapter
+      install_rack_on server
     end
     
     def start
@@ -50,12 +51,12 @@ module JettyRails
       context_handler
     end
     
-    def install_rack_on(server, adapter)
+    def install_rack_on(server)
       @app_context = Jetty::Handler::WebAppContext.new("/", config[:context_path])
       @app_context.class_loader = JRuby.runtime.jruby_class_loader
       @app_context.resource_base = config[:base]
       
-      if adapter == :rails
+      if config[:adapter] == :rails
         # refer to goldspike and jruby-rack documentation
         @app_context.init_params = {
           'rails.root' => '/',
@@ -64,7 +65,7 @@ module JettyRails
           'gem.path' => 'tmp/war/WEB-INF/gems'
         }
         @app_context.add_event_listener(Rack::RailsServletContextListener.new)
-      elsif adapter == :merb
+      elsif config[:adapter] == :merb
         @app_context.init_params = {
           'merb.root' => '/',
           'public.root' => '/public',

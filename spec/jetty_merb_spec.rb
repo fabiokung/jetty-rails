@@ -2,15 +2,15 @@ require File.dirname(__FILE__) + '/spec_helper.rb'
 
 describe "binary executable with no command line arguments" do
   
-  it "should set adapter to rails" do
+  it "should set adapter to merb" do
     runner = mock("runner", :null_object => true)
     current_dir = Dir.pwd
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:adapter)
-      config[:adapter].should eql(:rails)
+      config[:adapter].should eql(:merb)
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should provide the current execution dir as basedir" do
@@ -21,7 +21,7 @@ describe "binary executable with no command line arguments" do
       config[:base].should eql(current_dir)
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should not set the context path by default" do
@@ -30,7 +30,7 @@ describe "binary executable with no command line arguments" do
       config.should_not have_key(:context_path)
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should not set the environment by default" do
@@ -39,17 +39,17 @@ describe "binary executable with no command line arguments" do
       config.should_not have_key(:environment)
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
-  it "should set the port to 3000 by default" do
+  it "should set the port to 4000 by default" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:port)
-      config[:port].should eql(3000)
+      config[:port].should eql(4000)
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
 end
@@ -64,7 +64,7 @@ describe "binary executable with command line arguments" do
       config[:base].should eql('/any/app/dir')
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should take --context-path command line option as context path" do
@@ -76,7 +76,7 @@ describe "binary executable with command line arguments" do
       config[:context_path].should eql('/myapp')
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should take -u command line option as context path" do
@@ -88,7 +88,7 @@ describe "binary executable with command line arguments" do
       config[:context_path].should eql('/myapp')
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should take --environment command line option as custom environment" do
@@ -100,7 +100,7 @@ describe "binary executable with command line arguments" do
       config[:environment].should eql('production')
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should take -e command line option as custom environment" do
@@ -112,7 +112,7 @@ describe "binary executable with command line arguments" do
       config[:environment].should eql('production')
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should take --port command line option as custom server port" do
@@ -124,7 +124,7 @@ describe "binary executable with command line arguments" do
       config[:port].should eql(80)
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
   it "should take -p command line option as custom server port" do
@@ -136,7 +136,7 @@ describe "binary executable with command line arguments" do
       config[:port].should eql(80)
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_rails'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
 end
