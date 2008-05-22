@@ -6,7 +6,7 @@
 #
 # == Usage
 #
-# jetty_tails [OPTION] ... BASEDIR
+# jetty_rails [OPTION] ... BASEDIR
 #
 # -h, --help::
 #    show help
