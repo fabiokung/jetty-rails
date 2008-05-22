@@ -12,6 +12,8 @@ lib/jetty-6.1.9.jar
 lib/jetty-plus-6.1.9.jar
 lib/jetty-util-6.1.9.jar
 lib/jetty_rails.rb
+lib/jetty_rails/adapters/merb_adapter.rb
+lib/jetty_rails/adapters/rails_adapter.rb
 lib/jetty_rails/handler/delegate_on_errors_handler.rb
 lib/jetty_rails/jars.rb
 lib/jetty_rails/runner.rb
@@ -23,6 +25,7 @@ script/destroy
 script/generate
 script/txt2html
 setup.rb
+spec/jetty_merb_spec.rb
 spec/jetty_rails/handler/delegate_on_errors_handler_spec.rb
 spec/jetty_rails/runner_spec.rb
 spec/jetty_rails_spec.rb

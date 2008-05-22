@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
-describe JettyRails::Runner, "with no extra configuration" do
+describe JettyRails::Runner, "with no extra configuration (rails adapter)" do
   it "should require basedir to be run" do
     lambda { JettyRails::Runner.new }.should raise_error 
   end
@@ -113,3 +113,34 @@ describe JettyRails::Runner, "with custom configuration" do
     context_handlers.size.should eql(2) # one for static, one for dynamic
   end
 end
+
+describe JettyRails::Runner, "with merb adapter" do
+  
+  it "should set merb root" do
+    runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
+    runner.app_context.init_params['merb.root'].should eql('/')
+  end
+  
+  it "should set public root" do
+    runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
+    runner.app_context.init_params['public.root'].should eql('/public')
+  end
+  
+  it "should set gem path" do
+    runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
+    runner.app_context.init_params['gem.path'].should eql('tmp/war/WEB-INF/gems')
+  end
+  
+  it "should set merb environment to development" do
+    runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
+    runner.app_context.init_params['merb.environment'].should eql('development')
+  end
+  
+  it "should install MerbServletContextListener" do
+    runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
+    listeners = runner.app_context.event_listeners
+    listeners.size.should eql(1)
+    listeners[0].should be_kind_of(JettyRails::Rack::MerbServletContextListener)
+  end
+end
+
