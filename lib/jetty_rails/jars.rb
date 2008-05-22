@@ -18,6 +18,7 @@ module JettyRails
   module Rack
     include_package "org.jruby.rack"
     include_package "org.jruby.rack.rails"
+    include_package "org.jruby.rack.merb"
   end
   
 end

@@ -13,7 +13,7 @@ module JettyRails
       :port => 8080 
     }
     
-    def initialize(config = {})
+    def initialize(adapter = :rails, config = {})
       @config = config.symbolize_keys!.reverse_merge!(@@defaults)
       add_root_method_to @config[:context_path]
       
@@ -25,7 +25,7 @@ module JettyRails
       @server.add_connector(connector)
       
       add_public_dir_to server
-      install_rack_on server
+      install_rack_on server, adapter
     end
     
     def start
@@ -50,20 +50,30 @@ module JettyRails
       context_handler
     end
     
-    def install_rack_on(server)
+    def install_rack_on(server, adapter)
       @app_context = Jetty::Handler::WebAppContext.new("/", config[:context_path])
       @app_context.class_loader = JRuby.runtime.jruby_class_loader
       @app_context.resource_base = config[:base]
       
-      # refer to goldspike and jruby-rack documentation
-      @app_context.init_params = {
-        'rails.root' => '/',
-        'public.root' => '/public',
-        'rails.env' => config[:environment],
-        'gem.path' => 'tmp/war/WEB-INF/gems'
-      }
+      if adapter == :rails
+        # refer to goldspike and jruby-rack documentation
+        @app_context.init_params = {
+          'rails.root' => '/',
+          'public.root' => '/public',
+          'rails.env' => config[:environment],
+          'gem.path' => 'tmp/war/WEB-INF/gems'
+        }
+        @app_context.add_event_listener(Rack::RailsServletContextListener.new)
+      elsif adapter == :merb
+        @app_context.init_params = {
+          'merb.root' => '/',
+          'public.root' => '/public',
+          'merb.environment' => config[:environment],
+          'gem.path' => 'tmp/war/WEB-INF/gems'
+        }
+        @app_context.add_event_listener(Rack::MerbServletContextListener.new)
+      end
       
-      @app_context.add_event_listener(Rack::RailsServletContextListener.new)
       @app_context.add_filter(rack_filter, "/*", Jetty::Context::DEFAULT)
       server.add_handler(@app_context)
     end
