@@ -11,7 +11,7 @@ module JettyRails
       :adapter => :rails, 
       :environment => 'development',
       :context_path => '/',
-      :lib_dir => 'lib/*.jar',
+      :lib_dir => 'lib/**/*.jar',
       :port => 8080 
     }
     
