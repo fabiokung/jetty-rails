@@ -29,7 +29,12 @@ describe JettyRails::Runner, "with no extra configuration (rails adapter)" do
     runner = JettyRails::Runner.new :base => Dir.pwd
     runner.config.should have_key(:port)
     runner.config[:port].should eql(8080)
-    runner.app_context.context_path.should eql('/')
+  end
+  
+  it "should default lib_dir to lib/*.jar" do
+    runner = JettyRails::Runner.new :base => Dir.pwd
+    runner.config.should have_key(:lib_dir)
+    runner.config[:lib_dir].should eql('lib/*.jar')
   end
   
   it "should set rails root" do
