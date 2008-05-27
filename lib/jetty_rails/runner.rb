@@ -43,7 +43,7 @@ module JettyRails
     
     private
     def add_lib_dir_jars_to_classpath
-      lib_dir = config[:lib_dir]
+      lib_dir = "#{config[:base]}/#{config[:lib_dir]}"
       Dir[lib_dir].each do |jar|
         require jar
       end
