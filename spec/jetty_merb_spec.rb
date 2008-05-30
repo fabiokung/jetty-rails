@@ -7,7 +7,7 @@ describe "binary executable with no command line arguments" do
     current_dir = Dir.pwd
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:adapter)
-      config[:adapter].should eql(:merb)
+      config[:adapter].should == :merb
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -18,7 +18,7 @@ describe "binary executable with no command line arguments" do
     current_dir = Dir.pwd
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:base)
-      config[:base].should eql(current_dir)
+      config[:base].should == current_dir
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -46,7 +46,7 @@ describe "binary executable with no command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:port)
-      config[:port].should eql(4000)
+      config[:port].should == 4000
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -61,7 +61,7 @@ describe "binary executable with command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:base)
-      config[:base].should eql('/any/app/dir')
+      config[:base].should == '/any/app/dir'
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -73,7 +73,7 @@ describe "binary executable with command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:context_path)
-      config[:context_path].should eql('/myapp')
+      config[:context_path].should == '/myapp'
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -85,7 +85,7 @@ describe "binary executable with command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:context_path)
-      config[:context_path].should eql('/myapp')
+      config[:context_path].should == '/myapp'
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -97,7 +97,7 @@ describe "binary executable with command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:environment)
-      config[:environment].should eql('production')
+      config[:environment].should == 'production'
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -109,7 +109,7 @@ describe "binary executable with command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:environment)
-      config[:environment].should eql('production')
+      config[:environment].should == 'production'
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -121,7 +121,7 @@ describe "binary executable with command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:port)
-      config[:port].should eql(80)
+      config[:port].should == 80
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
@@ -133,7 +133,7 @@ describe "binary executable with command line arguments" do
     runner = mock("runner", :null_object => true)
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:port)
-      config[:port].should eql(80)
+      config[:port].should == 80
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'

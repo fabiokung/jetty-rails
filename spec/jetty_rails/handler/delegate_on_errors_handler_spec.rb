@@ -17,7 +17,7 @@ describe JettyRails::Handler::DelegateOnErrorsResponse do
     response = mock('original response')
     response.should_receive(:getContentType).once.and_return('text/html; charset=UTF-8')
     wrapper = JettyRails::Handler::DelegateOnErrorsResponse.new response, mock('request')
-    wrapper.getContentType.should eql('text/html; charset=UTF-8')
+    wrapper.getContentType.should == 'text/html; charset=UTF-8'
   end
   
   it "should set request to not handled state on error" do
