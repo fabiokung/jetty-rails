@@ -48,9 +48,21 @@ describe JettyRails::Runner, "with no extra configuration (rails adapter)" do
   end
   
   it "should set gem path" do
+    original = ENV['GEM_PATH']
+    ENV['GEM_PATH'] = nil
     runner = JettyRails::Runner.new :base => Dir.pwd
     runner.app_context.init_params['gem.path'].should == 'tmp/war/WEB-INF/gems'
+    ENV['GEM_PATH'] = original
   end
+  
+  it "should set gem path from environment" do
+    original = ENV['GEM_PATH']
+    ENV['GEM_PATH'] = "/usr/lib/ruby/gems/1.8/gems"
+    runner = JettyRails::Runner.new :base => Dir.pwd
+    runner.app_context.init_params['gem.path'].should == ENV['GEM_PATH']
+    ENV['GEM_PATH'] = original
+  end
+  
   
   it "should install RailsServletContextListener" do
     runner = JettyRails::Runner.new :base => Dir.pwd

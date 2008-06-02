@@ -12,7 +12,12 @@ module JettyRails
       :environment => 'development',
       :context_path => '/',
       :lib_dir => 'lib/**/*.jar',
-      :port => 8080 
+      :port => 8080,
+      :jruby_initial_runtimes => 1,
+      :jruby_max_runtimes => 5,
+      :thread_pool_max => 20,
+      :thread_pool_min => 1,
+      :acceptor_size => 5
     }
     
     @@adapters = {
@@ -27,7 +32,14 @@ module JettyRails
       raise 'Basedir to be run must be provided' unless config[:base]
       
       @server = Jetty::Server.new
+      # setup the thread pool for the server
+      thread_pool = Jetty::Thread::QueuedThreadPool.new
+      thread_pool.set_max_threads(config[:thread_pool_max])
+      thread_pool.set_min_threads(config[:thread_pool_min])
+      @server.set_thread_pool(thread_pool)
+      
       connector = Jetty::SelectChannelConnector.new
+      connector.set_acceptors(config[:acceptor_size])
       connector.port = config[:port]
       @server.add_connector(connector)
       
@@ -73,7 +85,7 @@ module JettyRails
       adapter = adapter_for config[:adapter]
       @app_context.init_params = adapter.init_params
       @app_context.add_event_listener(adapter.rack_event_listener)
-      
+
       @app_context.add_filter(rack_filter, "/*", Jetty::Context::DEFAULT)
       server.add_handler(@app_context)
     end
