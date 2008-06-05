@@ -23,6 +23,9 @@
 # BASEDIR (optional): directory to be run (default: current).
 
 require "java"
+
+$LOAD_PATH << "#{File.dirname(__FILE__)}/../lib"
+
 require "jetty_rails"
 require 'rdoc/usage'
 require 'getoptlong'
@@ -61,7 +64,7 @@ opts = GetoptLong.new(
     [ '--environment', '-e', GetoptLong::REQUIRED_ARGUMENT ]
   )
 
-config = {
+config = { 
   :base => Dir.pwd,
   :port => 3000,
   :adapter => :rails
