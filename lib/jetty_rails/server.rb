@@ -19,9 +19,6 @@ module JettyRails
   
     def initialize(config = {})
       @config = config.symbolize_keys!.reverse_merge!(@@defaults)
-      add_root_method_to @config[:context_path]
-    
-      raise 'Basedir to be run must be provided' unless config[:base]
     
       @server = Jetty::Server.new
       # setup the thread pool for the server
@@ -34,18 +31,30 @@ module JettyRails
       connector.set_acceptors(config[:acceptor_size])
       connector.port = config[:port]
       @server.add_connector(connector)
+
+      if config[:apps].nil?
+        add_app(config)
+      else
+        config[:apps].each do |app_config|
+          app_config.reverse_merge!(config)
+          app_config.delete(:apps)
+          add_app(app_config)
+        end
+      end
+    end
     
+    def add_app(config) 
+      raise 'Basedir to be run must be provided' unless config[:base]
+    
+      add_root_method_to config[:context_path]
+
       add_lib_dir_jars_to_classpath
       @server.add_handler(JettyRails::Handler::PublicDirectoryHandler.new(config))
 
       web_app_handler = JettyRails::Handler::WebAppHandler.new(config)
       (@app_contexts ||= []) << web_app_handler
 
-      @server.add_handler(web_app_handler)
-    end
-    
-    def add_app(config)
-      
+      @server.add_handler(web_app_handler)      
     end
   
     def start
