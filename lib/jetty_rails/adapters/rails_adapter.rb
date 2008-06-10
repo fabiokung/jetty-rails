@@ -14,7 +14,7 @@ module JettyRails
           'rails.root' => '/',
           'public.root' => '/public',
           'rails.env' => config[:environment],
-          'gem.path' => 'tmp/war/WEB-INF/gems'
+          'gem.path' => ENV['GEM_PATH'] || 'tmp/war/WEB-INF/gems'
         }
       end
       
