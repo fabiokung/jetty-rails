@@ -22,7 +22,7 @@ module JettyRails
     
     def initialize(config = {})
       @config = config.symbolize_keys!.reverse_merge!(@@defaults)
-      add_root_method_to @config[:context_path]
+      @config[:context_path].extend ContextPath
       
       raise 'Basedir to be run must be provided' unless config[:base]
       
@@ -82,17 +82,16 @@ module JettyRails
       Jetty::FilterHolder.new(Rack::RackFilter.new)
     end
     
-    def add_root_method_to(target)
-      (class << target; self; end).class_eval do
-        def root?
-          self == '/'
-        end
-      end
-    end
-    
     def adapter_for(kind)
       @@adapters[kind.to_sym].new(config)
     end
     
   end
+  
+  module ContextPath
+    def root?
+      self == '/'
+    end
+  end
+  
 end
