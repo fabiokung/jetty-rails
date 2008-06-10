@@ -30,7 +30,7 @@ jruby -S rake rcov
   cd myrailsapp
   jruby -S jetty_rails
   
---help option shows usage details:
+help option shows usage details:
   
   jruby -S jetty_rails --help
   
@@ -39,9 +39,9 @@ jruby -S rake rcov
   cd mymerbapp
   jruby -S jetty_merb
 
---help option shows usage details:
+help option shows usage details:
 
-  jruby -S jetty_rails --help
+  jruby -S jetty_merb --help
 
 == REQUIREMENTS:
 
