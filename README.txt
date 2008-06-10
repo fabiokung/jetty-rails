@@ -1,6 +1,6 @@
 = jetty-rails
 
-jetty-rails.rubyforge.net
+http://jetty-rails.rubyforge.net
 
 == DESCRIPTION:
 
