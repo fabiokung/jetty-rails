@@ -4,6 +4,7 @@ $:.unshift(File.dirname(__FILE__)) unless
 require "java"
 require "rubygems"
 require "activesupport"
+require "rdoc_fix"
 require "jetty_rails/jars"
 require "jetty_rails/adapters/rails_adapter"
 require "jetty_rails/adapters/merb_adapter"
