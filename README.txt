@@ -13,7 +13,8 @@ The project has born from my own needs. I needed to run JForum (http://jforum.ne
 == FEATURES:
 
 * Uses {JRuby Rack}[http://wiki.jruby.org/wiki/JRuby_Rack].
-* FIX (list of features)
+* Loads all jars inside your application lib/ dir, by default.
+* Supports rails and merb applications out of the box.
 
 == KNOWN ISSUES
 
@@ -24,11 +25,22 @@ jruby -S rake rcov
 
 == USAGE:
 
+=== Rails:
+
   cd myrailsapp
   jruby -S jetty_rails
   
 --help option shows usage details:
   
+  jruby -S jetty_rails --help
+  
+=== Merb:
+
+  cd mymerbapp
+  jruby -S jetty_merb
+
+--help option shows usage details:
+
   jruby -S jetty_rails --help
 
 == REQUIREMENTS:

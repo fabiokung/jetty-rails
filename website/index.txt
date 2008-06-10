@@ -19,7 +19,7 @@ h2. The basics
 
 Jetty Rails uses Jetty Handlers to dispatch requests to the "JRuby Rack adapter":http://wiki.jruby.org/wiki/JRuby_Rack. 
 
-Things like Java @HttpSession@, @ServletContext@ and Runtime Pools are given by JRuby Rack Filter.
+All extra jars inside your application lib/ dir will be loaded. Things like Java @HttpSession@, @ServletContext@ and Runtime Pools are given by JRuby Rack Filter.
 
 h2. Demonstration of usage
 
