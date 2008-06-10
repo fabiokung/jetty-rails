@@ -31,7 +31,7 @@ module JettyRails
       connector.port = config[:port]
       @server.add_connector(connector)
       
-      add_lib_dir_jars_to_classpath
+      add_stuff_to_classpath
       add_public_dir_to server
       install_rack_on server
     end
@@ -42,11 +42,18 @@ module JettyRails
     end
     
     private
-    def add_lib_dir_jars_to_classpath
+    def add_stuff_to_classpath
       lib_dir = "#{config[:base]}/#{config[:lib_dir]}"
       Dir[lib_dir].each do |jar|
         require jar
       end
+      
+      read_warble_config if File.exists?("#{config[:base]}/config/warble.rb")
+    end
+    
+    def read_warble_config
+      require 'warbler'
+      WarblerReader.new(config)
     end
     
     def add_public_dir_to(server)
