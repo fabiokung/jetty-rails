@@ -141,11 +141,12 @@ describe JettyRails::Runner, "with merb adapter" do
     runner.app_context.init_params['merb.environment'].should == 'development'
   end
   
-  it "should install MerbServletContextListener" do
+  it "should install MerbServletContextListener and SignalHandler" do
     runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
     listeners = runner.app_context.event_listeners
-    listeners.size.should == 1
+    listeners.size.should == 2
     listeners[0].should be_kind_of(JettyRails::Rack::MerbServletContextListener)
+    listeners[1].should be_kind_of(JettyRails::Adapters::MerbAdapter::SignalHandler)
   end
 end
 

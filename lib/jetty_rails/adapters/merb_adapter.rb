@@ -18,11 +18,24 @@ module JettyRails
         }
       end
       
-      def rack_event_listener
-        Rack::MerbServletContextListener.new
+      def event_listeners
+        [ Rack::MerbServletContextListener.new, SignalHandler.new ]
+      end
+      
+      class SignalHandler
+        include Java::JavaxServlet::ServletContextListener
+        
+        def contextInitialized(cfg)
+          trap("INT") do
+            puts "\nbye!"
+            java.lang.System.exit(0)
+          end
+        end
+        
+        def contextDestroyed(cfg)
+        end
       end
       
     end
-    
   end
 end

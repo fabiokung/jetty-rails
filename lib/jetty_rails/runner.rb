@@ -47,13 +47,6 @@ module JettyRails
       Dir[lib_dir].each do |jar|
         require jar
       end
-      
-      read_warble_config if File.exists?("#{config[:base]}/config/warble.rb")
-    end
-    
-    def read_warble_config
-      require 'warbler'
-      WarblerReader.new(config)
     end
     
     def add_public_dir_to(server)
@@ -79,7 +72,9 @@ module JettyRails
       
       adapter = adapter_for config[:adapter]
       @app_context.init_params = adapter.init_params
-      @app_context.add_event_listener(adapter.rack_event_listener)
+      adapter.event_listeners.each do |listener|
+        @app_context.add_event_listener(listener)
+      end
       
       @app_context.add_filter(rack_filter, "/*", Jetty::Context::DEFAULT)
       server.add_handler(@app_context)

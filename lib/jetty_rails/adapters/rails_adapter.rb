@@ -18,8 +18,8 @@ module JettyRails
         }
       end
       
-      def rack_event_listener
-        Rack::RailsServletContextListener.new
+      def event_listeners
+        [ Rack::RailsServletContextListener.new ]
       end
       
     end
