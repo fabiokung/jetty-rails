@@ -18,6 +18,7 @@ module JettyRails
         context_handler.handler = handler
         context_handler
       end
+      
     end
   end
 end

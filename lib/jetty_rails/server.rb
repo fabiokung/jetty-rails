@@ -46,8 +46,8 @@ module JettyRails
     def add_app(config) 
       raise 'Basedir to be run must be provided' unless config[:base]
     
-      add_root_method_to config[:context_path]
-
+      config[:context_path].extend ContextPath
+      
       add_lib_dir_jars_to_classpath
       @server.add_handler(JettyRails::Handler::PublicDirectoryHandler.new(config))
 
@@ -71,12 +71,10 @@ module JettyRails
       end
     end
   
-    def add_root_method_to(target)
-      (class << target; self; end).class_eval do
-        def root?
-          self == '/'
-        end
+    module ContextPath
+      def root?
+        self == '/'
       end
-    end  
+    end
   end
 end

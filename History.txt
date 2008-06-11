@@ -1,3 +1,8 @@
+== 0.5
+* load all jars inside lib/ by default
+* using GEM_PATH environment variable, if exists
+* fix signal handling (ctrl + c) for jetty_merb
+
 == 0.4
 * Merb support! jruby -S jetty_merb
 * Changed default ports to 3000 (rails) and 4000 (merb)

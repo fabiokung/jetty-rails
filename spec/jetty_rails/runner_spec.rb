@@ -50,17 +50,23 @@ describe JettyRails::Runner, "with no extra configuration (rails adapter)" do
   it "should set gem path" do
     original = ENV['GEM_PATH']
     ENV['GEM_PATH'] = nil
-    runner = JettyRails::Runner.new :base => Dir.pwd
-    runner.servers[8080].app_contexts.first.init_params['gem.path'].should == 'tmp/war/WEB-INF/gems'
-    ENV['GEM_PATH'] = original
+    begin
+      runner = JettyRails::Runner.new :base => Dir.pwd
+      runner.servers[8080].app_contexts.first.init_params['gem.path'].should == 'tmp/war/WEB-INF/gems'
+    ensure
+      ENV['GEM_PATH'] = original
+    end
   end
   
   it "should set gem path from environment" do
     original = ENV['GEM_PATH']
     ENV['GEM_PATH'] = "/usr/lib/ruby/gems/1.8/gems"
-    runner = JettyRails::Runner.new :base => Dir.pwd
-    runner.servers[8080].app_contexts.first.init_params['gem.path'].should == ENV['GEM_PATH']
-    ENV['GEM_PATH'] = original
+    begin
+      runner = JettyRails::Runner.new :base => Dir.pwd
+      runner.servers[8080].app_contexts.first.init_params['gem.path'].should == ENV['GEM_PATH']
+    ensure
+      ENV['GEM_PATH'] = original
+    end
   end
   
   
@@ -117,9 +123,11 @@ describe JettyRails::Runner, "with custom configuration" do
     context_handlers.size.should == 2 # one for static, one for dynamic
   end
   
-  # it "should handle config.yml with several servers and apps" do
-  #     runner = JettyRails::Runner.new 
-  #   end
+  it "should handle config.yml with several servers and apps" do
+    config = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'config.yml'))
+    runner = JettyRails::Runner.new(config)
+    
+  end
 end
 
 describe JettyRails::Runner, "with merb adapter" do
@@ -135,8 +143,14 @@ describe JettyRails::Runner, "with merb adapter" do
   end
   
   it "should set gem path" do
-    runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
-    runner.servers[8080].app_contexts.first.init_params['gem.path'].should == 'tmp/war/WEB-INF/gems'
+    original = ENV['GEM_PATH']
+    ENV['GEM_PATH'] = nil
+    begin
+      runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
+      runner.servers[8080].app_contexts.first.init_params['gem.path'].should == 'tmp/war/WEB-INF/gems'
+    ensure
+      ENV['GEM_PATH'] = original
+    end
   end
   
   it "should set merb environment to development" do
@@ -144,11 +158,12 @@ describe JettyRails::Runner, "with merb adapter" do
     runner.servers[8080].app_contexts.first.init_params['merb.environment'].should == 'development'
   end
   
-  it "should install MerbServletContextListener" do
+  it "should install MerbServletContextListener and SignalHandler" do
     runner = JettyRails::Runner.new :adapter => :merb, :base => Dir.pwd
     listeners = runner.servers[8080].app_contexts.first.event_listeners
-    listeners.size.should == 1
+    listeners.size.should == 2
     listeners[0].should be_kind_of(JettyRails::Rack::MerbServletContextListener)
+    listeners[1].should be_kind_of(JettyRails::Adapters::MerbAdapter::SignalHandler)
   end
 end
 

@@ -5,6 +5,8 @@ h1. &#x2192; 'jetty-rails'
 
 h2. What
 
+See the "what is included":rdoc/files/History_txt.html in the last version.
+
 Jetty Rails aims to run any Warbler based JRuby on Rails or JRuby Merb applications with Jetty Container, loading configuration from Warbler.
 
 This project is useful for people developing JRuby on Rails (or Merb) applications that can not use mongrel for development. Rails and Merb applications integrated with servlet based applications in the same context would be a reasonable reason.
@@ -19,7 +21,7 @@ h2. The basics
 
 Jetty Rails uses Jetty Handlers to dispatch requests to the "JRuby Rack adapter":http://wiki.jruby.org/wiki/JRuby_Rack. 
 
-Things like Java @HttpSession@, @ServletContext@ and Runtime Pools are given by JRuby Rack Filter.
+All extra jars inside your application lib/ dir will be loaded. Things like Java @HttpSession@, @ServletContext@ and Runtime Pools are given by JRuby Rack Filter.
 
 h2. Demonstration of usage
 

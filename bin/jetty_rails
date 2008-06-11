@@ -27,8 +27,8 @@ require "java"
 $LOAD_PATH << "#{File.dirname(__FILE__)}/../lib"
 
 require "jetty_rails"
-require 'rdoc/usage'
 require 'getoptlong'
+require 'rdoc/usage'
 
 # fix to work with rubygems (use current file instead of main)
 def RDoc.usage_no_exit(*args)

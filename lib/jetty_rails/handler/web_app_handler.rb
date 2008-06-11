@@ -11,7 +11,10 @@ module JettyRails
     
         adapter = adapter_for(config[:adapter])
         self.init_params = adapter.init_params
-        add_event_listener(adapter.rack_event_listener)
+        
+        adapter.event_listeners.each do |listener|
+          add_event_listener(listener)
+        end
 
         add_filter(rack_filter, "/*", Jetty::Context::DEFAULT)
       end
