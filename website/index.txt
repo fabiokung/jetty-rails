@@ -160,6 +160,10 @@ h2. Mailing list
 
 "http://groups.google.com/group/jetty-rails":http://groups.google.com/group/jetty-rails
 
+h2. Bug Tracking and New Features
+
+Using Lighthouse: "http://fabiokung.lighthouseapp.com/projects/12666-jetty-rails":http://fabiokung.lighthouseapp.com/projects/12666-jetty-rails
+
 h2. Getting the source
 
 github: "http://github.com/fabiokung/jetty-rails/tree/master":http://github.com/fabiokung/jetty-rails/tree/master

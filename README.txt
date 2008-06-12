@@ -63,6 +63,10 @@ it properly installed and inserted in your PATH environment variable.
 == INSTALL:
 
   jruby -S gem install jetty-rails
+  
+== BUGS AND NEW FEATURES
+
+Using Lighthouse: http://fabiokung.lighthouseapp.com/projects/12666-jetty-rails
 
 
 == MULTIPLE SERVERS:
