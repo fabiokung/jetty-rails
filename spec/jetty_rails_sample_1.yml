@@ -2,7 +2,7 @@
 :servers: 
 - :context_path: /testB
   :adapter: :rails
-  :base: /Users/jdamick/workspace/railsconf/jetty_rails_proj
+  :base: jetty_rails_proj
   :environment: development
   :port: 3000
 :environment: production
