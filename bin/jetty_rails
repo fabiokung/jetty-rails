@@ -61,7 +61,8 @@ opts = GetoptLong.new(
     [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
     [ '--context-path', '-u', GetoptLong::REQUIRED_ARGUMENT ],
     [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
-    [ '--environment', '-e', GetoptLong::REQUIRED_ARGUMENT ]
+    [ '--environment', '-e', GetoptLong::REQUIRED_ARGUMENT ],
+    [ '--config', '-c', GetoptLong::OPTIONAL_ARGUMENT ]
   )
 
 config = { 
@@ -80,10 +81,12 @@ opts.each do |opt, arg|
       config[:port] = arg.to_i
     when '--environment'
       config[:environment] = arg
+	when '--config'
+	  arg = "#{File.join(Dir.pwd, 'config', 'jetty_rails.yml')}"  if arg.nil? || arg == ""
+	  config = YAML.load_file(arg)
   end
 end
 
 config[:base] = ARGV.shift unless ARGV.empty?
-
 runner = JettyRails::Runner.new(config)
 runner.start

@@ -122,12 +122,6 @@ describe JettyRails::Runner, "with custom configuration" do
     context_handlers = runner.servers[8080].server.getChildHandlersByClass(JettyRails::Jetty::Handler::ContextHandler)
     context_handlers.size.should == 2 # one for static, one for dynamic
   end
-  
-  it "should handle config.yml with several servers and apps" do
-    config = YAML.load_file(File.join(File.dirname(__FILE__), '..', 'config.yml'))
-    runner = JettyRails::Runner.new(config)
-    
-  end
 end
 
 describe JettyRails::Runner, "with merb adapter" do
