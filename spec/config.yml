@@ -6,6 +6,7 @@
   :environment: development
   :port: 3000
   :lib_dir: lib/**/*.jar
+  :jruby_initial_runtimes: 2
 - :context_path: /testB
   :base: /testing
   :adapter: :merb
@@ -15,6 +16,7 @@
   - :context_path: /testC
     :base: /testing
     :adapter: :merb
+    :environment: test
   - :context_path: /testD
     :base: /something
     :adapter: :rails

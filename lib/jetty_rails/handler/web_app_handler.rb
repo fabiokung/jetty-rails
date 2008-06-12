@@ -1,7 +1,8 @@
 module JettyRails
   module Handler
     class WebAppHandler < Jetty::Handler::WebAppContext
-
+      attr_reader :config, :adapter
+      
       def initialize(config)
         super("/", config[:context_path])
         @config = config
@@ -9,10 +10,10 @@ module JettyRails
         self.class_loader = JRuby.runtime.jruby_class_loader
         self.resource_base = config[:base]
     
-        adapter = adapter_for(config[:adapter])
-        self.init_params = adapter.init_params
+        @adapter = adapter_for(config[:adapter])
+        self.init_params = @adapter.init_params
         
-        adapter.event_listeners.each do |listener|
+        @adapter.event_listeners.each do |listener|
           add_event_listener(listener)
         end
 

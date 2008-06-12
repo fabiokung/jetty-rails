@@ -20,6 +20,8 @@
 # --environment ENV, -e ENV::
 #    change rails environment (default: development)
 #
+# --config 
+#
 # BASEDIR (optional): directory to be run (default: current).
 
 require "java"
