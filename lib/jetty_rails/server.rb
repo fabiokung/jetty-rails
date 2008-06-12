@@ -44,7 +44,7 @@ module JettyRails
     end
     
     def add_app(config) 
-      raise 'Basedir to be run must be provided' unless config[:base]
+      raise 'Base dir to be run must be provided' unless config[:base]
     
       config[:context_path].extend ContextPath
       

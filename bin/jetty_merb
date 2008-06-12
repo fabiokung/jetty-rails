@@ -80,7 +80,7 @@ opts.each do |opt, arg|
       config[:environment] = arg
 	when '--config'
 	  arg = "#{File.join(Dir.pwd, 'jetty_merb.yml')}"  if arg.nil? || arg == ""
-	  config = YAML.load_file(arg)
+	  config.merge(YAML.load_file(arg))
   end
 end
 
