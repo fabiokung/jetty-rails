@@ -36,6 +36,8 @@ spec/jetty_merb_spec.rb
 spec/jetty_rails/config_file_spec.rb
 spec/jetty_rails/handler/delegate_on_errors_handler_spec.rb
 spec/jetty_rails/runner_spec.rb
+spec/jetty_rails_sample_1.yml
+spec/jetty_rails_sample_2.yml
 spec/jetty_rails_spec.rb
 spec/spec.opts
 spec/spec_helper.rb

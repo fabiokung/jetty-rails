@@ -26,10 +26,15 @@ module JettyRails
     end
     
     def start
+      server_threads = ThreadGroup.new
       @servers.each do |base, server|
         log("starting #{base}")
-        server.start
+        server_threads.add(Thread.new {
+          server.start
+        })
       end
+      
+      server_threads.list.each {|thread| thread.join } if !server_threads.list.empty?
     end
     
     

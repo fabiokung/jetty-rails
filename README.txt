@@ -33,7 +33,7 @@ jruby -S rake rcov
 help option shows usage details:
   
   jruby -S jetty_rails --help
-  
+
 === Merb:
 
   cd mymerbapp
@@ -42,6 +42,22 @@ help option shows usage details:
 help option shows usage details:
 
   jruby -S jetty_merb --help
+
+== Multiple Servers
+
+You can specify a configuration yaml file rather than command line switches. 
+The file also allows specifying multiple servers and / or application contexts for single jetty container.
+
+For example, you could set a context_path of /testA on port 8888 which is rails, /testB also that port which is merb.
+Or, you could have /testA on port 8888 and /testB on port 9999.
+
+=== Rails:
+
+If -c is not specified, by default jetty_rails will look for a config/jetty_rails.yml relative to where it is started.
+
+Don't forget to add this into your config/environment.rb
+ActionController::AbstractRequest.relative_url_root = "/testA"
+
 
 == REQUIREMENTS:
 
