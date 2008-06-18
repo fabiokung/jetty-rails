@@ -54,7 +54,7 @@ module JettyRails
       web_app_handler = JettyRails::Handler::WebAppHandler.new(config)
       (@app_contexts ||= []) << web_app_handler
 
-      @server.add_handler(web_app_handler)      
+      @server.add_handler(web_app_handler)   
     end
   
     def start
@@ -69,6 +69,11 @@ module JettyRails
       Dir[lib_dir].each do |jar|
         require jar
       end
+    end
+    
+    def read_warble_config
+      require 'warbler'
+      WarblerReader.new(config)
     end
   
     module ContextPath

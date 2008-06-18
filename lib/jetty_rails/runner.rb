@@ -22,11 +22,6 @@ module JettyRails
       read_warble_config if File.exists?("#{config[:base]}/config/warble.rb")
     end
     
-    def read_warble_config
-      require 'warbler'
-      WarblerReader.new(config)
-    end
-    
     def add_server(config = {})
       server = JettyRails::Server.new(config)
       @servers[server.config[:port]] = server
