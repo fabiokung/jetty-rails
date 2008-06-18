@@ -43,6 +43,16 @@ help option shows usage details:
 
   jruby -S jetty_merb --help
 
+=== Merb:
+
+  cd mymerbapp
+  jruby -S jetty_merb
+
+help option shows usage details:
+
+  jruby -S jetty_merb --help
+
+
 == REQUIREMENTS:
 
 jetty-rails requires jruby (>=1.1). Please make sure you already have 
@@ -53,6 +63,63 @@ it properly installed and inserted in your PATH environment variable.
 == INSTALL:
 
   jruby -S gem install jetty-rails
+
+
+== MULTIPLE SERVERS:
+
+You can specify a configuration yaml file rather than command line switches. 
+The file also allows specifying multiple servers and / or application contexts for single jetty container.
+
+For example, you could set a context_path of /testA on port 8888 which is rails, /testB also that port which is merb.
+Or, you could have /testA on port 8888 and /testB on port 9999.
+
+ jruby -S jetty_rails -c path/to/config.yml
+
+The configuration options are inherited, so if you specify the environment to be "production" at the top level, 
+then any servers and application context will be "production" unless the choose to override the value.
+
+- server settings:
+  <tt>:port</tt>, <tt>:jruby_initial_runtimes</tt>, <tt>:jruby_max_runtimes</tt>, <tt>:thread_pool_max</tt>, <tt>:thread_pool_min</tt>, <tt>:acceptor_size</tt>
+
+- application context settings:
+  <tt>:context_path</tt>, <tt>:base</tt>, <tt>:adapter</tt>, <tt>:environment</tt>, <tt>:lib_dir</tt>, <tt>:gem_path</tt>
+
+As part of the configuration you have some control over jruby & jetty.
+
+See spec/config.yml, spec/jetty_rails_sample_1.yml, and spec/jetty_rails_sample_2.yml for more examples.
+
+=== Rails:
+
+If -c is not specified, by default jetty_rails will look for a config/jetty_rails.yml relative to where it is started.
+
+Don't forget to add this into your config/environment.rb
+ActionController::AbstractRequest.relative_url_root = "/testA"
+
+
+=== JRuby Configuration
+
+You can tweak the JRuby runtimes per application context:
+
+  jruby_initial_runtimes: 1
+  jruby_max_runtimes: 2
+
+
+=== Jetty Configuration
+
+You can also modify the jetty per server configurations:
+
+Thread pool will define the thread pool available to the jetty server using a QueuedThreadPool.
+
+  thread_pool_max: 40
+  thread_pool_min: 1
+
+
+The acceptor size is the number of acceptor threads available for that server's channel connector.
+
+  acceptor_size: 20
+
+See the jetty documentation for more information.
+
 
 == LICENSE:
 

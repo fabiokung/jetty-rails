@@ -12,6 +12,9 @@ module JettyRails
       include_package "org.mortbay.jetty.handler"
       include_package "org.mortbay.jetty.webapp"
     end
+    module Thread
+      include_package "org.mortbay.thread"
+    end
   end
 
   require "jruby-rack-0.9"

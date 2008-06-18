@@ -20,6 +20,9 @@
 # --environment ENV, -e ENV::
 #    change rails environment (default: development)
 #
+# --config FILE, -c FILE:: (optional)
+#	config file to use instead of command line switches (allows for multiple servers)
+#
 # BASEDIR (optional): directory to be run (default: current).
 
 require "java"
@@ -58,7 +61,8 @@ opts = GetoptLong.new(
     [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
     [ '--context-path', '-u', GetoptLong::REQUIRED_ARGUMENT ],
     [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
-    [ '--environment', '-e', GetoptLong::REQUIRED_ARGUMENT ]
+    [ '--environment', '-e', GetoptLong::REQUIRED_ARGUMENT ],
+    [ '--config', '-c', GetoptLong::OPTIONAL_ARGUMENT ]
   )
 
 config = {
@@ -77,6 +81,9 @@ opts.each do |opt, arg|
       config[:port] = arg.to_i
     when '--environment'
       config[:environment] = arg
+	when '--config'
+	  arg = "#{File.join(Dir.pwd, 'jetty_merb.yml')}"  if arg.nil? || arg == ""
+	  config.merge!(YAML.load_file(arg))
   end
 end
 

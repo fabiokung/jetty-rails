@@ -1,21 +1,14 @@
 module JettyRails
   module Adapters
     
-    class MerbAdapter
-      attr_reader :config
-      
-      def initialize(config)
-        @config = config
-      end
+    class MerbAdapter < AbstractAdapter
       
       def init_params
         # please refer to goldspike and jruby-rack documentation
         @merb_params ||= {
           'merb.root' => '/',
-          'public.root' => '/public',
-          'merb.environment' => config[:environment],
-          'gem.path' => ENV['GEM_PATH'] || 'tmp/war/WEB-INF/gems'
-        }
+          'merb.environment' => config[:environment]
+        }.merge(base_init_params)
       end
       
       def event_listeners
