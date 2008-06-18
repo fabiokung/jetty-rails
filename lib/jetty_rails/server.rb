@@ -48,7 +48,7 @@ module JettyRails
     
       config[:context_path].extend ContextPath
       
-      add_lib_dir_jars_to_classpath
+      add_lib_dir_jars_to_classpath(config)
       @server.add_handler(JettyRails::Handler::PublicDirectoryHandler.new(config))
 
       web_app_handler = JettyRails::Handler::WebAppHandler.new(config)
@@ -64,7 +64,7 @@ module JettyRails
   
   
     private
-    def add_lib_dir_jars_to_classpath
+    def add_lib_dir_jars_to_classpath(config)
       lib_dir = "#{config[:base]}/#{config[:lib_dir]}"
       Dir[lib_dir].each do |jar|
         require jar
