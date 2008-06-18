@@ -24,7 +24,6 @@ lib/jetty_rails/runner.rb
 lib/jetty_rails/server.rb
 lib/jetty_rails/version.rb
 lib/jruby-rack-0.9.jar
-lib/rdoc_fix.rb
 lib/servlet-api-2.5-6.1.9.jar
 script/console
 script/destroy
