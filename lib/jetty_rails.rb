@@ -13,6 +13,7 @@ require "jetty_rails/server"
 require "jetty_rails/handler/delegate_on_errors_handler"
 require "jetty_rails/handler/public_directory_handler"
 require "jetty_rails/handler/web_app_handler"
+require "jetty_rails/config/command_line_config"
 
 module JettyRails
   JETTY_RAILS_HOME = File.dirname(__FILE__) + "/.." unless defined?(JETTY_RAILS_HOME)

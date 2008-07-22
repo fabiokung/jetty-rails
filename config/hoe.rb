@@ -8,8 +8,7 @@ RUBYFORGE_PROJECT = 'jetty-rails' # The unix name for your project
 HOMEPATH = "http://#{RUBYFORGE_PROJECT}.rubyforge.org"
 DOWNLOAD_PATH = "http://rubyforge.org/projects/#{RUBYFORGE_PROJECT}"
 EXTRA_DEPENDENCIES = [
- ['activesupport', '>= 1.3.1'],
- ['daemons', '>= 1.0.10']
+ ['activesupport', '>= 1.3.1']
 ]    # An array of rubygem dependencies [name, version]
 
 @config_file = "~/.rubyforge/user-config.yml"

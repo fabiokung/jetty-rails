@@ -1,4 +1,5 @@
 require "jruby"
+require 'daemons'
 
 module JettyRails
   
@@ -8,6 +9,7 @@ module JettyRails
     def initialize(config = {})
       @servers = {}
       config.symbolize_keys!
+      @daemonize = config[:daemonize] || false
       if config[:servers].nil?
         add_server(config) 
       else
@@ -19,7 +21,7 @@ module JettyRails
         end
       end
       
-      read_warble_config if File.exists?("#{config[:base]}/config/warble.rb")
+      #read_warble_config if File.exists?("#{config[:base]}/config/warble.rb")
     end
     
     def add_server(config = {})
@@ -28,6 +30,8 @@ module JettyRails
     end
     
     def start
+      Daemons.daemonize if @daemonize
+      
       server_threads = ThreadGroup.new
       @servers.each do |base, server|
         log("starting #{base}")
