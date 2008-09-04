@@ -26,7 +26,7 @@ lib/jetty_rails/runner.rb
 lib/jetty_rails/server.rb
 lib/jetty_rails/version.rb
 lib/jetty_rails/warbler_reader.rb
-lib/jruby-rack-0.9.jar
+lib/jruby-rack-0.9.1.jar
 lib/servlet-api-2.5-6.1.9.jar
 script/console
 script/destroy
@@ -47,7 +47,6 @@ tasks/deployment.rake
 tasks/environment.rake
 tasks/rspec.rake
 tasks/website.rake
-test.rb
 website/index.html
 website/index.txt
 website/javascripts/rounded_corners_lite.inc.js
