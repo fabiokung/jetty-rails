@@ -14,6 +14,7 @@ The project has born from my own needs. I needed to run JForum (http://jforum.ne
 
 * Uses {JRuby Rack}[http://wiki.jruby.org/wiki/JRuby_Rack].
 * Loads all jars inside your application lib/ dir, by default.
+* Loads all classes inside your application classes/ dir, by default.
 * Supports rails and merb applications out of the box.
 
 == KNOWN ISSUES

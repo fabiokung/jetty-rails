@@ -11,6 +11,7 @@ module JettyRails
         self.class_loader = org.jruby.util.JRubyClassLoader.new(JRuby.runtime.jruby_class_loader)
         self.resource_base = config[:base]
         
+        add_classes_dir_to_classpath(config)
         add_lib_dir_jars_to_classpath(config)
     
         @adapter = adapter_for(config[:adapter])
@@ -54,6 +55,11 @@ module JettyRails
           url = java.io.File.new(jar).to_url
           self.class_loader.add_url(url)
         end
+      end
+      def add_classes_dir_to_classpath(config)
+        classes_dir = "#{config[:base]}/#{config[:classes_dir]}"
+        url = java.io.File.new(classes_dir).to_url
+        self.class_loader.add_url(url)
       end
     end
   end

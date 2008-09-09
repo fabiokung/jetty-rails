@@ -9,6 +9,7 @@ module JettyRails
       :environment => 'development',
       :context_path => '/',
       :lib_dir => 'lib/**/*.jar',
+      :classes_dir => 'classes',
       :port => 8080,
       :jruby_min_runtimes => 1,
       :jruby_max_runtimes => 5,
