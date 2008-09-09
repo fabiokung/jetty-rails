@@ -7,14 +7,12 @@ class CommandLineConfig
   def self.default_config()
     @config ||= {
       :rails => { 
-        :daemonize => false,
         :base => Dir.pwd,
         :port => 3000,
         :config_file => "#{File.join(Dir.pwd, 'config', 'jetty_rails.yml')}",
         :adapter => :rails
       },
       :merb => {
-        :daemonize => false,
         :base => Dir.pwd,
         :port => 4000,
         :config_file => "#{File.join(Dir.pwd, 'jetty_merb.yml')}",
