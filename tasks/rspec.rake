@@ -1,10 +1,4 @@
 begin
-  require 'spec'
-rescue LoadError
-  require 'rubygems'
-  require 'spec'
-end
-begin
   require 'spec/rake/spectask'
 rescue LoadError
   puts <<-EOS

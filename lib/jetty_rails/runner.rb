@@ -1,5 +1,4 @@
 require "jruby"
-require 'daemons'
 
 module JettyRails
   
@@ -9,7 +8,6 @@ module JettyRails
     def initialize(config = {})
       @servers = {}
       config.symbolize_keys!
-      @daemonize = config[:daemonize] || false
       if config[:servers].nil?
         add_server(config) 
       else
@@ -30,8 +28,6 @@ module JettyRails
     end
     
     def start
-      Daemons.daemonize if @daemonize
-      
       server_threads = ThreadGroup.new
       @servers.each do |base, server|
         log("starting #{base}")
