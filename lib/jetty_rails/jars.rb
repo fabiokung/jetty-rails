@@ -17,7 +17,7 @@ module JettyRails
     end
   end
 
-  require "jruby-rack-0.9.1"
+  require "jruby-rack-0.9.2"
   module Rack
     include_package "org.jruby.rack"
     include_package "org.jruby.rack.rails"
