@@ -83,7 +83,7 @@ The configuration options are inherited, so if you specify the environment to be
 then any servers and application context will be "production" unless the choose to override the value.
 
 - server settings:
-  <tt>:port</tt>, <tt>:jruby_initial_runtimes</tt>, <tt>:jruby_max_runtimes</tt>, <tt>:thread_pool_max</tt>, <tt>:thread_pool_min</tt>, <tt>:acceptor_size</tt>
+  <tt>:port</tt>, <tt>:jruby_min_runtimes</tt>, <tt>:jruby_max_runtimes</tt>, <tt>:thread_pool_max</tt>, <tt>:thread_pool_min</tt>, <tt>:acceptor_size</tt>
 
 - application context settings:
   <tt>:context_path</tt>, <tt>:base</tt>, <tt>:adapter</tt>, <tt>:environment</tt>, <tt>:lib_dir</tt>, <tt>:gem_path</tt>
@@ -104,7 +104,7 @@ ActionController::AbstractRequest.relative_url_root = "/testA"
 
 You can tweak the JRuby runtimes per application context:
 
-  jruby_initial_runtimes: 1
+  jruby_min_runtimes: 1
   jruby_max_runtimes: 2
 
 

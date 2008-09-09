@@ -10,6 +10,8 @@ module JettyRails
         # create an isolated classloader per application context
         self.class_loader = org.jruby.util.JRubyClassLoader.new(JRuby.runtime.jruby_class_loader)
         self.resource_base = config[:base]
+        
+        add_lib_dir_jars_to_classpath(config)
     
         @adapter = adapter_for(config[:adapter])
         self.init_params = @adapter.init_params
@@ -37,13 +39,21 @@ module JettyRails
       end
   
       protected
-  
       def rack_filter
         Jetty::FilterHolder.new(Rack::RackFilter.new)
       end
   
       def adapter_for(kind)
         adapters[kind.to_sym].new(@config)
+      end
+      
+      private
+      def add_lib_dir_jars_to_classpath(config)
+        lib_dir = "#{config[:base]}/#{config[:lib_dir]}"
+        Dir[lib_dir].each do |jar|
+          url = java.io.File.new(jar).to_url
+          self.class_loader.add_url(url)
+        end
       end
     end
   end

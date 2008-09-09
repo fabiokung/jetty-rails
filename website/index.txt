@@ -60,7 +60,7 @@ then any servers and application context will be "production" unless the choose 
 - server settings:
 
 <pre>:port
-:jruby_initial_runtimes
+:jruby_min_runtimes
 :jruby_max_runtimes
 :thread_pool_max
 :thread_pool_min
@@ -102,7 +102,7 @@ As part of the configuration you have some control over jruby & jetty. Take a lo
       :base: jetty_rails_proj_2
       :environment: production
   :environment: production
-  :jruby_initial_runtimes: 1
+  :jruby_min_runtimes: 1
   :jruby_max_runtimes: 2
   :thread_pool_max: 40
   :thread_pool_min: 1
@@ -130,7 +130,7 @@ h3. JRuby Configuration
 You can tweak the JRuby runtimes per application context:
 
 <pre>
-:jruby_initial_runtimes: 1
+:jruby_min_runtimes: 1
 :jruby_max_runtimes: 2
 </pre>
 

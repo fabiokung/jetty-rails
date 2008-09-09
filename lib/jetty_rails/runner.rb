@@ -18,8 +18,6 @@ module JettyRails
           add_server(server_config)
         end
       end
-      
-      #read_warble_config if File.exists?("#{config[:base]}/config/warble.rb")
     end
     
     def add_server(config = {})

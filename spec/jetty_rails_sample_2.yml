@@ -21,7 +21,7 @@
     :base: jetty_rails_proj_2
     :environment: production
 :environment: production
-:jruby_initial_runtimes: 1
+:jruby_min_runtimes: 1
 :jruby_max_runtimes: 2
 :thread_pool_max: 40
 :thread_pool_min: 1

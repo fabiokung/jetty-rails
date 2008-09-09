@@ -47,10 +47,10 @@ describe JettyRails::Runner, "with config file containing several servers and ap
 
   it "should setup jruby environment" do
     runner = JettyRails::Runner.new(@yaml_config)
-    runner.servers[4000].app_contexts.first.adapter.init_params['jruby.initial.runtimes'].should == '1'
+    runner.servers[4000].app_contexts.first.adapter.init_params['jruby.min.runtimes'].should == '1'
     runner.servers[4000].app_contexts.first.adapter.init_params['jruby.max.runtimes'].should == '2'
 
-    runner.servers[3000].app_contexts.first.adapter.init_params['jruby.initial.runtimes'].should == '2'
+    runner.servers[3000].app_contexts.first.adapter.init_params['jruby.min.runtimes'].should == '2'
     runner.servers[3000].app_contexts.first.adapter.init_params['jruby.max.runtimes'].should == '2'    
   end
   

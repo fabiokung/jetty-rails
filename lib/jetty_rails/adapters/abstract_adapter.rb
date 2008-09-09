@@ -11,8 +11,8 @@ module JettyRails
         @base_init_params ||= { 
           'public.root' => '/public',
           'gem.path' => config[:gem_path] || ENV['GEM_PATH'] || 'tmp/war/WEB-INF/gems',
-          'jruby.initial.runtimes' => "#{config[:jruby_initial_runtimes]}",
-          'jruby.min.runtimes' => "#{config[:jruby_initial_runtimes]}",
+          'jruby.initial.runtimes' => "#{config[:jruby_min_runtimes]}",
+          'jruby.min.runtimes' => "#{config[:jruby_min_runtimes]}",
           'jruby.max.runtimes' => "#{config[:jruby_max_runtimes]}"
         }
       end

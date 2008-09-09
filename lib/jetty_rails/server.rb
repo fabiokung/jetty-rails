@@ -10,7 +10,7 @@ module JettyRails
       :context_path => '/',
       :lib_dir => 'lib/**/*.jar',
       :port => 8080,
-      :jruby_initial_runtimes => 1,
+      :jruby_min_runtimes => 1,
       :jruby_max_runtimes => 5,
       :thread_pool_max => 20,
       :thread_pool_min => 1,
@@ -45,16 +45,12 @@ module JettyRails
     
     def add_app(config) 
       raise 'Base dir to be run must be provided' unless config[:base]
-    
       config[:context_path].extend ContextPath
       
-      add_lib_dir_jars_to_classpath(config)
       @server.add_handler(JettyRails::Handler::PublicDirectoryHandler.new(config))
-
       web_app_handler = JettyRails::Handler::WebAppHandler.new(config)
       (@app_contexts ||= []) << web_app_handler
-
-      @server.add_handler(web_app_handler)   
+      @server.add_handler(web_app_handler)
     end
   
     def start
@@ -64,13 +60,6 @@ module JettyRails
   
   
     private
-    def add_lib_dir_jars_to_classpath(config)
-      lib_dir = "#{config[:base]}/#{config[:lib_dir]}"
-      Dir[lib_dir].each do |jar|
-        require jar
-      end
-    end
-    
     def read_warble_config
       require 'warbler'
       WarblerReader.new(config)
