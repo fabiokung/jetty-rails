@@ -52,6 +52,23 @@ describe "binary executable with no command line arguments" do
     load File.dirname(__FILE__) + '/../bin/jetty_merb'
   end
   
+  it "should not set classes dir by default" do
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should_not have_key(:classes_dir)
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
+  end
+  
+  it "should not set lib dir by default" do
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should_not have_key(:lib_dir)
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
+  end
 end
 
 describe "binary executable with command line arguments" do
@@ -134,6 +151,42 @@ describe "binary executable with command line arguments" do
     JettyRails::Runner.should_receive(:new) do |config|
       config.should have_key(:port)
       config[:port].should == 80
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
+  end
+  
+  it "should take --classes command line option as custom classes dir" do
+    ARGV[0] = '--classes'
+    ARGV[1] = 'build/java/classes'
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should have_key(:classes_dir)
+      config[:classes_dir].should == 'build/java/classes'
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
+  end
+  
+  it "should take --lib command line option as custom jars dir" do
+    ARGV[0] = '--lib'
+    ARGV[1] = 'java/jars'
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should have_key(:lib_dir)
+      config[:lib_dir].should == 'java/jars'
+      runner
+    end
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'
+  end
+    
+  it "should take --jars command line option as custom jars dir" do
+    ARGV[0] = '--jars'
+    ARGV[1] = 'java/jars'
+    runner = mock("runner", :null_object => true)
+    JettyRails::Runner.should_receive(:new) do |config|
+      config.should have_key(:lib_dir)
+      config[:lib_dir].should == 'java/jars'
       runner
     end
     load File.dirname(__FILE__) + '/../bin/jetty_merb'

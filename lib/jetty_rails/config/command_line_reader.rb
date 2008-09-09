@@ -2,10 +2,10 @@ require 'getoptlong'
 require 'jetty_rails/config/rdoc_fix'
 
 
-class CommandLineConfig
+class CommandLineReader
 
-  def self.default_config()
-    @config ||= {
+  def default_config()
+    @@config ||= {
       :rails => { 
         :base => Dir.pwd,
         :port => 3000,
@@ -21,7 +21,7 @@ class CommandLineConfig
     }
   end
 
-  def self.get_config(default_adapter = :rails)
+  def read(default_adapter = :rails)
     config = default_config[default_adapter]
     
     opts = GetoptLong.new(
@@ -30,6 +30,8 @@ class CommandLineConfig
       [ '--context-path', '-u', GetoptLong::REQUIRED_ARGUMENT ],
       [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
       [ '--environment', '-e', GetoptLong::REQUIRED_ARGUMENT ],
+      [ '--lib', '--jars', GetoptLong::REQUIRED_ARGUMENT ],
+      [ '--classes', GetoptLong::REQUIRED_ARGUMENT ],
       [ '--config', '-c', GetoptLong::OPTIONAL_ARGUMENT ]
     )
     
@@ -47,6 +49,10 @@ class CommandLineConfig
           config[:port] = arg.to_i
         when '--environment'
           config[:environment] = arg
+        when '--classes'
+          config[:classes_dir] = arg
+        when '--lib'
+          config[:lib_dir] = arg
     	  when '--config'
     	    config[:config_file] = arg if !arg.nil? && arg != ""
     	    config.merge!(YAML.load_file(config[:config_file]))

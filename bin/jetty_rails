@@ -20,6 +20,12 @@
 # --environment ENV, -e ENV::
 #    change rails environment (default: development)
 #
+# --classes CLASSES_DIR::
+#    directory containing java classes used by the application (default: 'classes/')
+#
+# --lib LIB_DIR, --jars LIB_DIR::
+#    directory containing jars used by the application (default: 'lib/')
+#
 # --config FILE, -c FILE:: (optional)
 #	config file to use instead of command line switches (allows for multiple servers)
 #
@@ -29,5 +35,6 @@ require "java"
 $LOAD_PATH << "#{File.dirname(__FILE__)}/../lib"
 require "jetty_rails"
 
-runner = JettyRails::Runner.new(CommandLineConfig.get_config(:rails))
+options = CommandLineReader.new.read(:rails)
+runner = JettyRails::Runner.new(options)
 runner.start

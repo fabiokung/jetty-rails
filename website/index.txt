@@ -23,6 +23,9 @@ Jetty Rails uses Jetty Handlers to dispatch requests to the "JRuby Rack adapter"
 
 All extra jars inside your application lib/ dir will be loaded. Things like Java @HttpSession@, @ServletContext@ and Runtime Pools are given by JRuby Rack Filter.
 
+Additionally, Jetty Rails automatically puts classes inside the classes/ dir 
+in the application classpath, so you can use them in your rails code.
+
 h2. Demonstration of usage
 
 Rails:
