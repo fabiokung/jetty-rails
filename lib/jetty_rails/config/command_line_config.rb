@@ -27,6 +27,7 @@ class CommandLineConfig
     config = default_config[default_adapter]
     
     opts = GetoptLong.new(
+      [ '--version', '-v', GetoptLong::NO_ARGUMENT ],
       [ '--help', '-h', GetoptLong::NO_ARGUMENT ],
       [ '--context-path', '-u', GetoptLong::REQUIRED_ARGUMENT ],
       [ '--port', '-p', GetoptLong::REQUIRED_ARGUMENT ],
@@ -36,6 +37,10 @@ class CommandLineConfig
     
     opts.each do |opt, arg|
       case opt
+        when '--version'
+          require 'jetty_rails/version'
+          puts "JettyRails version #{JettyRails::VERSION::STRING} - http://jetty-rails.rubyforge.org"
+          exit(0)
         when '--help'
           RDoc::usage
         when '--context-path'
