@@ -1,3 +1,11 @@
+== 0.6
+* load all java classes inside classes/ by default
+* command line args to customize lib/ and classes/ directories
+* separate classloaders for each web application context (isolated classpaths)
+* upgraded to jruby-rack-0.9.2 (no more views being cached in development time)
+* minor changes and refactorings
+* improved docs for multi-server support
+
 == 0.5
 * load all jars inside lib/ by default
 * using GEM_PATH environment variable, if exists
