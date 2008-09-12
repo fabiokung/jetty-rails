@@ -16,7 +16,7 @@ lib/jetty_rails.rb
 lib/jetty_rails/adapters/abstract_adapter.rb
 lib/jetty_rails/adapters/merb_adapter.rb
 lib/jetty_rails/adapters/rails_adapter.rb
-lib/jetty_rails/config/command_line_config.rb
+lib/jetty_rails/config/command_line_reader.rb
 lib/jetty_rails/config/rdoc_fix.rb
 lib/jetty_rails/handler/delegate_on_errors_handler.rb
 lib/jetty_rails/handler/public_directory_handler.rb
