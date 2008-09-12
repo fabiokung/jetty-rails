@@ -9,9 +9,13 @@ bin/jetty_merb
 bin/jetty_rails
 config/hoe.rb
 config/requirements.rb
-lib/jetty-6.1.9.jar
-lib/jetty-plus-6.1.9.jar
-lib/jetty-util-6.1.9.jar
+jetty-libs/core-3.1.1.jar
+jetty-libs/jetty-6.1.11.jar
+jetty-libs/jetty-plus-6.1.11.jar
+jetty-libs/jetty-util-6.1.11.jar
+jetty-libs/jsp-2.1.jar
+jetty-libs/jsp-api-2.1.jar
+jetty-libs/servlet-api-2.5-6.1.11.jar
 lib/jetty_rails.rb
 lib/jetty_rails/adapters/abstract_adapter.rb
 lib/jetty_rails/adapters/merb_adapter.rb
@@ -27,7 +31,6 @@ lib/jetty_rails/server.rb
 lib/jetty_rails/version.rb
 lib/jetty_rails/warbler_reader.rb
 lib/jruby-rack-0.9.2.jar
-lib/servlet-api-2.5-6.1.9.jar
 script/console
 script/destroy
 script/generate

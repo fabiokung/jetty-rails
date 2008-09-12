@@ -31,10 +31,10 @@ describe JettyRails::Runner, "with no extra configuration (rails adapter)" do
     runner.servers[8080].config[:port].should == 8080
   end
   
-  it "should default lib_dir to lib/*.jar" do
+  it "should default lib_dir to lib" do
     runner = JettyRails::Runner.new :base => Dir.pwd
     runner.servers[8080].config.should have_key(:lib_dir)
-    runner.servers[8080].config[:lib_dir].should == 'lib/**/*.jar'
+    runner.servers[8080].config[:lib_dir].should == 'lib'
   end
   
   it "should set rails root" do

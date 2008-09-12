@@ -1,9 +1,12 @@
 module JettyRails
   
-  require "jetty-6.1.9"
-  require "servlet-api-2.5-6.1.9"
-  require "jetty-util-6.1.9"
-  require "jetty-plus-6.1.9"
+  require "servlet-api-2.5-6.1.11"
+  require "jetty-6.1.11"
+  require "jetty-util-6.1.11"
+  require "jetty-plus-6.1.11"
+  require "core-3.1.1"
+  require "jsp-api-2.1"
+  require "jsp-2.1"
   module Jetty
     include_package "org.mortbay.jetty"
     include_package "org.mortbay.jetty.servlet"

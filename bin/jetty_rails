@@ -33,6 +33,7 @@
 
 require "java"
 $LOAD_PATH << "#{File.dirname(__FILE__)}/../lib"
+$LOAD_PATH << "#{File.dirname(__FILE__)}/../jetty-libs"
 require "jetty_rails"
 
 options = CommandLineReader.new.read(:rails)
