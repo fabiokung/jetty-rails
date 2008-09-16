@@ -19,6 +19,8 @@ The project has born from my own needs. I needed to run JForum (http://jforum.ne
 
 == KNOWN ISSUES
 
+* Doesn't work with JRuby 1.1.4: http://jira.codehaus.org/browse/JRUBY-2959
+
 * To generate coverage report with jruby (>= 1.1) follow instructions from http://www.ruby-forum.com/topic/146252 and run (inside jetty-rails root dir):
 jruby -S rake rcov
 

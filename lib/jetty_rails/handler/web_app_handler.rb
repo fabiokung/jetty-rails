@@ -9,6 +9,7 @@ module JettyRails
 
         # create an isolated classloader per application context
         self.class_loader = org.jruby.util.JRubyClassLoader.new(JRuby.runtime.jruby_class_loader)
+        
         self.resource_base = config[:base]
         self.descriptor = config[:web_xml]
         
