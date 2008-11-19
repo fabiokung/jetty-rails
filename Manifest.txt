@@ -10,12 +10,12 @@ bin/jetty_rails
 config/hoe.rb
 config/requirements.rb
 jetty-libs/core-3.1.1.jar
-jetty-libs/jetty-6.1.11.jar
-jetty-libs/jetty-plus-6.1.11.jar
-jetty-libs/jetty-util-6.1.11.jar
+jetty-libs/jetty-6.1.14.jar
+jetty-libs/jetty-plus-6.1.14.jar
+jetty-libs/jetty-util-6.1.14.jar
 jetty-libs/jsp-2.1.jar
 jetty-libs/jsp-api-2.1.jar
-jetty-libs/servlet-api-2.5-6.1.11.jar
+jetty-libs/servlet-api-2.5-6.1.14.jar
 lib/jetty_rails.rb
 lib/jetty_rails/adapters/abstract_adapter.rb
 lib/jetty_rails/adapters/merb_adapter.rb
