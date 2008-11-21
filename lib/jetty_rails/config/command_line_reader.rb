@@ -15,7 +15,7 @@ class CommandLineReader
       :merb => {
         :base => Dir.pwd,
         :port => 4000,
-        :config_file => "#{File.join(Dir.pwd, 'jetty_merb.yml')}",
+        :config_file => "#{File.join(Dir.pwd, 'config', 'jetty_merb.yml')}",
         :adapter => :merb
       }
     }

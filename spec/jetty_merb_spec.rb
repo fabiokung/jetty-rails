@@ -10,7 +10,7 @@ describe "binary executable with no command line arguments" do
       config[:adapter].should == :merb
       runner
     end
-    load File.dirname(__FILE__) + '/../bin/jetty_merb'
+    load File.dirname(__FILE__) + '/../bin/jetty_merb'      
   end
   
   it "should provide the current execution dir as basedir" do
