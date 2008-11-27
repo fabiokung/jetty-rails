@@ -20,7 +20,7 @@ module JettyRails
     end
   end
 
-  require "jruby-rack-0.9.3-SNAPSHOT"
+  require "jruby-rack-0.9.3"
   module Rack
     include_package "org.jruby.rack"
     include_package "org.jruby.rack.rails"
