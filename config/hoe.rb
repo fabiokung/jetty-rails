@@ -62,7 +62,6 @@ $hoe = Hoe.new(GEM_NAME, VERS) do |p|
   p.changes = p.paragraphs_of("History.txt", 0..1).join("\n\n")
   p.extra_deps = EXTRA_DEPENDENCIES
   p.rdoc_pattern = /^(lib|bin|ext).*[^\.jar]$|txt$/
-  p.spec_extras['platform'] = 'jruby'
 
   # A hash of extra values to set in the gemspec.
   # p.spec_extras = {
