@@ -1,3 +1,6 @@
+== 0.8
+
+
 == 0.7
 * Merb 1.0 support!
 * jruby-rack updated to the latest release (0.9.3)
