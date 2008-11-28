@@ -1,3 +1,11 @@
+== 0.7
+* Merb 1.0 support!
+* jruby-rack updated to the latest release (0.9.3)
+* jetty server update to 6.1.14
+* adding known issue with jruby-1.1.4 to the docs
+* JSP and JSP Expression Language support
+* some minor bugs
+
 == 0.6
 * load all java classes inside classes/ by default
 * command line args to customize lib/ and classes/ directories
