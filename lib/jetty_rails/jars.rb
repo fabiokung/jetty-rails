@@ -11,6 +11,7 @@ module JettyRails
     include_package "org.mortbay.jetty"
     include_package "org.mortbay.jetty.servlet"
     include_package "org.mortbay.jetty.nio"
+    include_package "org.mortbay.resource"
     module Handler
       include_package "org.mortbay.jetty.handler"
       include_package "org.mortbay.jetty.webapp"
