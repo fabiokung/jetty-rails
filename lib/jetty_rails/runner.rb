@@ -28,7 +28,7 @@ module JettyRails
     def start
       server_threads = ThreadGroup.new
       @servers.each do |base, server|
-        log("starting #{base}")
+        log("Starting server #{base}")
         server_threads.add(Thread.new do
           server.start
         end)
