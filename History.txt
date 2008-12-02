@@ -1,5 +1,6 @@
 == 0.8
-
+* reading config/web.xml file (not yet supporting config/web.xml.erb)
+* supporting /public/WEB-INF dir for custom web resources (config files and taglibs)
 
 == 0.7
 * Merb 1.0 support!

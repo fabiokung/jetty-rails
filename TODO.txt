@@ -1,13 +1,11 @@
 == TODO never ends...
 
 * Improve RDocs
-* configuration defaults (web.xml, classes dir, lib dir, ...)
 * integration test for lib_dir jars loading
 * read configuration from warble.rb
 * install custom resources from warbler configuration
-* more command line options: --daemon, --num-instances
 * add custom classes from warble.rb to the context classpath
 * add custom jars from warble.rb to the context classpath
-* load web.xml (or web.erb.xml) from config/web.xml
+* support config/web.xml.erb
 * read any custom jetty.xml
 * support jetty-plus features (i.e.: jndi)
