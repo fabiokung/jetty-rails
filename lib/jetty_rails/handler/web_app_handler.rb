@@ -7,9 +7,7 @@ module JettyRails
         super("/", config[:context_path])
         @config = config
 
-        # create an isolated classloader per application context
-        self.class_loader = org.jruby.util.JRubyClassLoader.new(JRuby.runtime.jruby_class_loader)
-        
+        self.class_loader = new_classloader_for_application_context
         self.resource_base = config[:base]
         self.descriptor = config[:web_xml]
         
@@ -62,6 +60,9 @@ module JettyRails
         classes_dir = "#{config[:base]}/#{config[:classes_dir]}"
         url = java.io.File.new(classes_dir).to_url
         self.class_loader.add_url(url)
+      end
+      def new_classloader_for_application_context()
+        org.jruby.util.JRubyClassLoader.new(JRuby.runtime.jruby_class_loader)
       end
     end
   end
