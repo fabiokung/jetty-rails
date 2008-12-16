@@ -4,11 +4,11 @@ http://jetty-rails.rubyforge.net
 
 == DESCRIPTION:
 
-JettyRails aims to run Ruby on Rails and Merb applications with the Jetty Container, leveraging the power of JRuby and jruby-rack.
+Jetty Rails aims to run Ruby on Rails and Merb applications with the Jetty Container, leveraging the power of JRuby and jruby-rack.
 
 {Jetty}[http://jetty.mortbay.com/jetty/] is an excellent Java Web Server, being and at the same time extremely lightweight. This makes jetty-rails a good alternative for JRuby on Rails or Merb development and deployment.
 
-The project has born from my own needs. I needed to run JForum (http://jforum.net) in the same context of my JRuby on Rails application. I had also to integrate HttpSessions (avoiding single sign on) and use ServletContext in-memory cache store.
+The project has born from my own needs ({read more}[http://fabiokung.com/2008/05/14/jetty-rails-gem-simple-jruby-on-rails-development-with-servlet-containers/]). I needed to run {JForum}[http://jforum.net] in the same context of my JRuby on Rails application. I had also to integrate HttpSessions (avoiding single sign on) and use ServletContext in-memory cache store.
 
 == FEATURES:
 
