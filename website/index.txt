@@ -1,6 +1,6 @@
 h1. Jetty Rails
 
-h1. &#x2192; 'jetty-rails'
+h1. &rarr; 'jetty-rails'
 
 
 h2. What
