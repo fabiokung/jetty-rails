@@ -2,6 +2,7 @@ require 'fileutils'
 include FileUtils
 
 require 'rubygems'
+gem 'hoe', '<= 1.8.2'
 %w[rake hoe rubigen].each do |req_gem|
   begin
     require req_gem
