@@ -30,7 +30,7 @@ lib/jetty_rails/runner.rb
 lib/jetty_rails/server.rb
 lib/jetty_rails/version.rb
 lib/jetty_rails/warbler_reader.rb
-lib/jruby-rack-0.9.4.jar
+lib/jruby-rack-0.9.5-SNAPSHOT.jar
 script/console
 script/destroy
 script/generate
