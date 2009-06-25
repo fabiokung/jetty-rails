@@ -7,8 +7,6 @@ Rakefile
 TODO.txt
 bin/jetty_merb
 bin/jetty_rails
-config/website.yml
-config/website.yml.sample
 jetty-libs/core-3.1.1.jar
 jetty-libs/jetty-6.1.14.jar
 jetty-libs/jetty-plus-6.1.14.jar
