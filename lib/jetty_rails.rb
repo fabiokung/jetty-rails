@@ -20,6 +20,6 @@ require "jetty_rails/handler/web_app_handler"
 require "jetty_rails/config/command_line_reader"
 
 module JettyRails
-  VERSION = '0.9'
+  VERSION = '0.8.1'
   JETTY_RAILS_HOME = File.dirname(__FILE__) + "/.." unless defined?(JETTY_RAILS_HOME)
 end

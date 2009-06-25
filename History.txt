@@ -1,3 +1,7 @@
+== 0.8.1
+* updating jruby-rack to be compatible with Rails 2.3.x
+* better build system, upgrading to newer version of newgem
+
 == 0.8
 * reading config/web.xml file (not yet supporting config/web.xml.erb)
 * supporting /public/WEB-INF dir for custom web resources (config files and taglibs)
