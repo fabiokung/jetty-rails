@@ -16,7 +16,7 @@ $hoe = Hoe.new('jetty-rails', JettyRails::VERSION) do |p|
     ['newgem', ">= #{::Newgem::VERSION}"]
   ]
   
-  p.spec_extras['platform'] = 'jruby' # JRuby gem created, e.g. jetty-rails-X.Y.Z-jruby.gem
+  #p.spec_extras['platform'] = 'java' # JRuby gem created, e.g. jetty-rails-X.Y.Z-jruby.gem
   
   p.clean_globs |= %w[**/.DS_Store tmp *.log **/.*.sw? *.gem .config]
   path = (p.rubyforge_name == p.name) ? p.rubyforge_name : "\#{p.rubyforge_name}/\#{p.name}"
